@@ -22,7 +22,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <li>{listTeams}</li>
+        <ul>{listTeams}</ul>
       </div>
     );
   }
