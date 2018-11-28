@@ -1,5 +1,11 @@
-.App {
-  //text-align: center;
+.App .soccer_table {
+  width: 60%;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-spacing: 0px;
+  border-color: grey;
 }
 
 .App-logo {
