@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledTable from './style';
+import {StyledTable, TextWrapper} from './style';
 
 function Table(props){
 
@@ -48,27 +48,31 @@ function Table(props){
   );
 
   return (
-    // props.country
-    <StyledTable className="soccer_table">
-    <thead>
-      <tr>
-          <th>P</th>
-          <th>Team</th>
-          <th>GP</th>
-          <th>W</th>
-          <th>D</th>
-          <th>L</th>
-          <th>F</th>
-          <th>A</th>
-          <th>GD</th>
-          <th>Pts</th>
-          <th>Form</th>
-        </tr>
-    </thead>
-    <tbody>
-      {listTeams}
-    </tbody>  
-    </StyledTable>
+    <div>
+      <TextWrapper>
+        {props.country}
+      </TextWrapper>
+      <StyledTable className="soccer_table">
+      <thead>
+        <tr>
+            <th>P</th>
+            <th>Team</th>
+            <th>GP</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>F</th>
+            <th>A</th>
+            <th>GD</th>
+            <th>Pts</th>
+            <th>Form</th>
+          </tr>
+      </thead>
+      <tbody>
+        {listTeams}
+      </tbody>  
+      </StyledTable>
+    </div>
   );
 }
 

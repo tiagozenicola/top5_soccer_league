@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 
 const StyledTable = styled.table`
-  border: 2px solid red;
+  border: 1px solid red;
+`
+
+const TextWrapper = styled.div`
+  text-align: center;
 `
 
 
-export default StyledTable;
+export {StyledTable, TextWrapper};
