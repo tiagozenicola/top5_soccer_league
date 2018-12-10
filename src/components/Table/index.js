@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import {StyledTable, TextWrapper} from './style';
 
 class Table extends Component {
+
+  componentDidMount(){
+    fetch('https://www.theguardian.com/football/tables')
+      .then(a => console.log(a))
+      .catch(err => console.error(err));
+  }
+
   render(){
     const teams = [
       {
