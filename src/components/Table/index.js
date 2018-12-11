@@ -4,9 +4,9 @@ import {StyledTable, TextWrapper} from './style';
 class Table extends Component {
 
   componentDidMount(){
-    fetch('https://www.theguardian.com/football/tables')
-      .then(a => console.log(a))
-      .catch(err => console.error(err));
+    fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
+      .then(console.log)
+      .catch(console.error);
   }
 
   render(){
