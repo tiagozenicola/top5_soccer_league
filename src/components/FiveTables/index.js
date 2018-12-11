@@ -4,17 +4,20 @@ import Table from '../Table'
 
 class FiveTables extends Component {
 
-  getTeams = data => {
+  getTables = data => {
     const html = this.getAsHtml(data)
     const tables = html.getElementsByTagName('table')
     const majorTables = Array.from(tables).slice(0,5)
-    console.log(majorTables);
-    console.log(this.getTeamsFromTable(majorTables[0]))
-    console.log(this.getTeamsFromTable(majorTables[1]))
-    console.log(this.getTeamsFromTable(majorTables[2]))
-    console.log(this.getTeamsFromTable(majorTables[3]))
-    console.log(this.getTeamsFromTable(majorTables[4]))
-    return {teams: html};
+    
+    const mapTables = {
+      'englad': this.getTeamsFromTable(majorTables[0]),
+      'spain': this.getTeamsFromTable(majorTables[1]),
+      'germany': this.getTeamsFromTable(majorTables[2]),
+      'italy': this.getTeamsFromTable(majorTables[3]),
+      'france': this.getTeamsFromTable(majorTables[4]),
+    }
+
+    return mapTables;
   }
 
   getTeamsFromTable = table => {
@@ -61,19 +64,24 @@ class FiveTables extends Component {
         return response.text();
       })
       .then(data => {
-        this.setState(this.getTeams(data))
+        const tables = this.getTables(data)
+        console.log('setState', typeof(tables), tables)
+        this.setState(tables)
       })
       .catch(console.error);
   }
 
   render(){
+    const teams = this.state || []
+    console.log('renbder', teams)
+
+    const tables = Object.keys(teams).map(country => {
+      return <Table key={country} country={country} teams={teams[country]}/>
+    })
+
     return (
       <Container className="App">
-        <Table country='englad'/>
-        <Table country='spain'/>
-        <Table country='germany'/>
-        <Table country='italy'/>
-        <Table country='france'/>
+        {tables}
       </Container>
     )
   }
