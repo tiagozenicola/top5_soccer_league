@@ -3,12 +3,6 @@ import {StyledTable, TextWrapper} from './style';
 
 class Table extends Component {
 
-  componentDidMount(){
-    fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
-      .then(console.log)
-      .catch(console.error);
-  }
-
   render(){
     const teams = [
       {
