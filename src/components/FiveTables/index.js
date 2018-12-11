@@ -42,7 +42,8 @@ class FiveTables extends Component {
         "goals_against": columns[7].innerText,
         "goal_difference": columns[8].innerText,
         "points": columns[9].innerText,
-        "history": columns[10].innerText,
+        "history": [],
+        "percent": columns[9].innerText / (columns[2].innerText * 3),
       })
 
     })

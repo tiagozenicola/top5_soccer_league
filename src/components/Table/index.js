@@ -18,6 +18,7 @@ class Table extends Component {
         <td>{team.goal_difference}</td>
         <td>{team.points}</td>
         <td>{team.history}</td>
+        <td>{team.percent.toFixed(3)}</td>
       </tr>
     );
   
@@ -40,6 +41,7 @@ class Table extends Component {
               <th>GD</th>
               <th>Pts</th>
               <th>Form</th>
+              <th>%</th>
             </tr>
         </thead>
         <tbody>
