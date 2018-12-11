@@ -7,8 +7,14 @@ class FiveTables extends Component {
   componentDidMount(){
     fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
       .then(response => {
-        // debugger;
-        console.log(response);
+        if (!response.ok){
+          console.error('Error calling site');
+        }
+        return response.text();
+      })
+      .then(data => {
+        console.log(data);
+        this.setState({teams: data})
       })
       .catch(console.error);
   }
