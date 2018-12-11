@@ -4,35 +4,8 @@ import {StyledTable, TextWrapper} from './style';
 class Table extends Component {
 
   render(){
-    const teams = [
-      {
-          "name": "Man City",
-          "games_played": 13,
-          "win": 11,
-          "drawn": 2,
-          "lost": 0,
-          "goals_for": 40,
-          "goals_against": 5,
-          "goal_difference": 35,
-          "points": 35,
-          "history": ['w','w','w','w','w'],
-      },
-      {
-          "name": "Barcelona",
-          "games_played": 13,
-          "win": 7,
-          "drawn": 4,
-          "lost": 2,
-          "goals_for": 35,
-          "goals_against": 19,
-          "goal_difference": 16,
-          "points": 25,
-          "history": ['w','w','w','l','d'],
-      },
-    ];
-  
-  
-    const listTeams = teams.map((team, index) =>
+
+    const listTeams = this.props.teams.map((team, index) =>
       <tr key={team.name}>
         <td>{index + 1}</td>
         <td>{team.name}</td>
