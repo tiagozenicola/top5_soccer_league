@@ -4,6 +4,20 @@ import Table from '../Table'
 
 class FiveTables extends Component {
 
+  getTeams = data => {
+    const html = this.getAsHtml(data)
+    const tables = html.getElementsByTagName('table')
+    const majorTables = Array.from(tables).slice(0,5)
+    console.log(majorTables)
+    return {teams: html};
+  }
+
+  getAsHtml = text => {
+    const template = document.createElement('ghostElement');
+    template.innerHTML = text
+    return template
+  }
+
   componentDidMount(){
     fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
       .then(response => {
@@ -13,8 +27,7 @@ class FiveTables extends Component {
         return response.text();
       })
       .then(data => {
-        console.log(data);
-        this.setState({teams: data})
+        this.setState(this.getTeams(data))
       })
       .catch(console.error);
   }
