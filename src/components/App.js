@@ -5,9 +5,7 @@ import FiveTables from './FiveTables';
 class App extends Component {
 
   render() {
-    console.log('render', this)
     const {screen} = this.state || {};
-    console.log('render2', screen)
 
     return (
       <div className="App">

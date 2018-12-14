@@ -66,7 +66,6 @@ class FiveTables extends Component {
       })
       .then(data => {
         const tables = this.getTables(data)
-        console.log('setState', typeof(tables), tables)
         this.setState(tables)
       })
       .catch(console.error);
@@ -74,7 +73,6 @@ class FiveTables extends Component {
 
   render(){
     const teams = this.state || []
-    console.log('renbder', teams)
 
     const tables = Object.keys(teams).map(country => {
       return <Table key={country} country={country} teams={teams[country]}/>
