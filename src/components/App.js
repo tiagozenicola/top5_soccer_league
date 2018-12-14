@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import FiveTables from './FiveTables';
+import NBA from './NBA';
+import NFL from './NFL';
 
 class App extends Component {
 
@@ -19,6 +21,8 @@ class App extends Component {
           NFL
         </button>
         {screen === 'soccer' && <FiveTables />}
+        {screen === 'nba' && <NBA />}
+        {screen === 'nfl' && <NFL />}
       </div>
     );
   }
