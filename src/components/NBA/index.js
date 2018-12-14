@@ -1,6 +1,4 @@
-import React, {Component} from 'react';
-import Container from './style'
-import Table from '../Table'
+import {Component} from 'react';
 
 class NBA extends Component {
 
