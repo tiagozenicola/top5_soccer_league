@@ -1,9 +1,14 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
+import Container from './style'
 
 class NFL extends Component {
 
-  render(){
-    return 'NFL goes here'
+  render(){    
+    return (
+      <Container>
+        NFL goes here
+      </Container>
+    )
   }
   
 }
