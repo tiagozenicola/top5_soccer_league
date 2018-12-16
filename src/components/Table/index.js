@@ -3,6 +3,21 @@ import {StyledTable, TextWrapper} from './style';
 
 class Table extends Component {
 
+
+  sort = property => {
+    console.log(this.props.teams)
+    console.log(this.props.teams.sort((a,b)=>{
+      console.log(11, a,b, a['points'])
+      if (a[property] < b[property]){
+        return -1;
+      }
+      if (a[property] > b[property]){
+        return 1;
+      }
+      return 0;
+    }))
+  }
+
   render(){
 
     const listTeams = this.props.teams.map((team, index) =>
@@ -30,7 +45,7 @@ class Table extends Component {
         <StyledTable className="soccer_table">
         <thead>
           <tr>
-              <th>P</th>
+              <th><button onClick={() => this.sort('points')}>P</button></th>
               <th>Team</th>
               <th>GP</th>
               <th>W</th>
