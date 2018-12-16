@@ -23,7 +23,18 @@ class FiveTables extends Component {
   render(){
     const teams = this.state || []
 
-    const all_teams = Object.keys(teams).flatMap(key=>teams[key])
+    const all_teams = Object.keys(teams)
+      .flatMap(key=>teams[key])
+      .sort((a,b) => {
+        if (a.percent < b.percent){
+          return 1;
+        }
+        if (a.percent > b.percent){
+          return -1;
+        }
+
+        return 0;
+    })
 
     const tables = Object.keys(teams).map(country => {
       return <Table key={country} country={country} teams={teams[country]}/>
