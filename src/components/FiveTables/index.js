@@ -23,6 +23,8 @@ class FiveTables extends Component {
   render(){
     const teams = this.state || []
 
+    const all_teams = Object.keys(teams).flatMap(key=>teams[key])
+
     const tables = Object.keys(teams).map(country => {
       return <Table key={country} country={country} teams={teams[country]}/>
     })
@@ -30,6 +32,7 @@ class FiveTables extends Component {
     return (
       <Container className="App">
         {tables}
+        {teams.length > 0 && <Table key='all' country='all' teams={all_teams}/>}
       </Container>
     )
   }
