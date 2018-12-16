@@ -1,15 +1,15 @@
+const countries = ['englad', 'spain', 'germany','italy','france']
+
 const getTables = data => {
   const html = getAsHtml(data)
   const tables = html.getElementsByTagName('table')
-  const majorTables = Array.from(tables).slice(0,5)
-  
-  const mapTables = {
-    'englad': getTeamsFromTable(majorTables[0]),
-    'spain': getTeamsFromTable(majorTables[1]),
-    'germany': getTeamsFromTable(majorTables[2]),
-    'italy': getTeamsFromTable(majorTables[3]),
-    'france': getTeamsFromTable(majorTables[4]),
-  }
+  const majorTables = Array.from(tables).slice(0, countries.length)
+
+  const mapTables = {}
+
+  majorTables.forEach((table, index) => {
+    mapTables[countries[index]] = getTeamsFromTable(table);
+  })
 
   return mapTables;
 }
