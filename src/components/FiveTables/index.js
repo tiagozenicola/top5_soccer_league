@@ -32,7 +32,7 @@ class FiveTables extends Component {
     return (
       <Container className="App">
         {tables}
-        {teams.length > 0 && <Table key='all' country='all' teams={all_teams}/>}
+        {tables.length > 0 && <Table key='all' country='all' teams={all_teams}/>}
       </Container>
     )
   }
