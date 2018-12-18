@@ -6,8 +6,8 @@ import Button from '../Button'
 class Table extends Component {
 
   state = {
-    sortProperty: 'position',
-    orientation: 1
+    sortProperty: 'percent',
+    orientation: -1
   }
 
   sort = field => {
