@@ -4,23 +4,36 @@ import {StyledTable, TextWrapper} from './style';
 class Table extends Component {
 
   state = {
+    orientation: 1
   }
 
   sort = field => {
+    const {sortProperty, orientation} = this.state
+    
+    console.log('sort', sortProperty, orientation)
+
+    if (field === sortProperty){
+      this.setState({ 
+        sortProperty: field,
+        orientation: orientation * -1 
+      })
+      return
+    }
+    
     this.setState({ sortProperty: field })
   }
 
   getSortedTeams = () => {
-    const {sortProperty} = this.state
+    const {sortProperty, orientation} = this.state
 
     if (sortProperty){
       return this.props.teams.sort((a,b) => {
         if (a[sortProperty] < b[sortProperty]){
-          return -1;
+          return -1 * orientation;
         }
 
         if (a[sortProperty] > b[sortProperty]){
-          return 1;
+          return 1 * orientation;
         }
 
         return 0;
