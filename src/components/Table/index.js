@@ -71,8 +71,12 @@ class Table extends Component {
         <StyledTable className="soccer_table">
         <thead>
           <tr>
-              <th><button onClick={() => this.sort('points')}>P</button></th>
-              <th><button onClick={() => this.sort('name')}>Team</button></th>
+              <th>
+                <button onClick={() => this.sort('points')}>P</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('nbuttonme')}>Team</button>
+              </th>
               <th>GP</th>
               <th>W</th>
               <th>D</th>
