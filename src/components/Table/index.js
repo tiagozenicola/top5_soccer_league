@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { StyledTable, TextWrapper, StyledButton } from './style';
+import { StyledTable, TextWrapper } from './style';
+import Button from '../Button'
+
 
 class Table extends Component {
 
@@ -46,7 +48,6 @@ class Table extends Component {
 
   render(){
     const teams = this.getSortedTeams()
-    const {sortProperty, orientation} = this.state
 
     const listTeams = teams.map((team, index) =>
       <tr key={team.name}>
@@ -74,42 +75,40 @@ class Table extends Component {
         <thead>
           <tr>
               <th>
-                <StyledButton onClick={() => this.sort('position')}>
-                  P⇧⇩
-                </StyledButton>
+                <Button value="P" {...this.state} onClick={() => this.sort('position')}/>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('name')}>Team</StyledButton>
+                <Button onClick={() => this.sort('name')}>Team</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('games_played')}>GP</StyledButton>
+                <Button onClick={() => this.sort('games_played')}>GP</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('win')}>W</StyledButton>
+                <Button onClick={() => this.sort('win')}>W</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('drawn')}>D</StyledButton>
+                <Button onClick={() => this.sort('drawn')}>D</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('lost')}>L</StyledButton>
+                <Button onClick={() => this.sort('lost')}>L</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('goals_for')}>F</StyledButton>
+                <Button onClick={() => this.sort('goals_for')}>F</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('goals_against')}>A</StyledButton>
+                <Button onClick={() => this.sort('goals_against')}>A</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('goal_difference')}>GD</StyledButton>
+                <Button onClick={() => this.sort('goal_difference')}>GD</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('points')}>Pts</StyledButton>
+                <Button onClick={() => this.sort('points')}>Pts</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('history')}>Form</StyledButton>
+                <Button onClick={() => this.sort('history')}>Form</Button>
               </th>
               <th>
-                <StyledButton onClick={() => this.sort('percent')}>%</StyledButton>
+                <Button onClick={() => this.sort('percent')}>%</Button>
               </th>
             </tr>
         </thead>
