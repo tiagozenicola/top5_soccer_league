@@ -78,37 +78,37 @@ class Table extends Component {
                 <Button value="P" {...this.state} onClick={() => this.sort('position')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('name')}>Team</Button>
+                <Button value="Team" {...this.state} onClick={() => this.sort('name')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('games_played')}>GP</Button>
+                <Button value="GP" {...this.state} onClick={() => this.sort('games_played')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('win')}>W</Button>
+                <Button value="W" {...this.state} onClick={() => this.sort('win')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('drawn')}>D</Button>
+                <Button value="D" {...this.state} onClick={() => this.sort('drawn')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('lost')}>L</Button>
+                <Button value="L" {...this.state} onClick={() => this.sort('lost')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('goals_for')}>F</Button>
+                <Button value="F" {...this.state} onClick={() => this.sort('goals_for')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('goals_against')}>A</Button>
+                <Button value="A" {...this.state} onClick={() => this.sort('goals_against')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('goal_difference')}>GD</Button>
+                <Button value="GD" {...this.state} onClick={() => this.sort('goal_difference')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('points')}>Pts</Button>
+                <Button value="Pts" {...this.state} onClick={() => this.sort('points')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('history')}>Form</Button>
+                <Button value="Form" {...this.state} onClick={() => this.sort('history')}/>
               </th>
               <th>
-                <Button onClick={() => this.sort('percent')}>%</Button>
+                <Button value="%" {...this.state} onClick={() => this.sort('percent')}/>
               </th>
             </tr>
         </thead>
