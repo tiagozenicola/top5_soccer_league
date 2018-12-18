@@ -9,7 +9,7 @@ const Button = (props) => {
       {value}
       {
         sortProperty !== name ? '' : (  
-          orientation === 1 ? '⇩' : '⇧' 
+          orientation === 1 ? '⇧' : '⇩'
         )
       }
     </StyledButton>
