@@ -7,24 +7,22 @@ class Table extends Component {
   }
 
   sort = field => {
-    console.log('sort', this.state)
     this.setState({ sortProperty: field })
   }
 
   getSortedTeams = () => {
-    console.log('getSortedTeams', this.props, this.state)
     const {sortProperty} = this.state
 
     if (sortProperty){
-      console.log('***sort***', this.props, this.state)
-      return this.props.teams.sort((a,b)=>{
-        console.log(11, a,b, a['points'])
+      return this.props.teams.sort((a,b) => {
         if (a[sortProperty] < b[sortProperty]){
           return -1;
         }
+
         if (a[sortProperty] > b[sortProperty]){
           return 1;
         }
+
         return 0;
       })
     }
@@ -33,7 +31,6 @@ class Table extends Component {
   }
 
   render(){
-    console.log('render', this.props)
     const teams = this.getSortedTeams()
 
     const listTeams = teams.map((team, index) =>
