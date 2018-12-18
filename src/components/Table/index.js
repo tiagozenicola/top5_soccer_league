@@ -93,7 +93,7 @@ class Table extends Component {
                 <button onClick={() => this.sort('goals_for')}>F</button>
               </th>
               <th>
-                <button onClick={() => this.sort('goals_againt')}>A</button>
+                <button onClick={() => this.sort('goals_against')}>A</button>
               </th>
               <th>
                 <button onClick={() => this.sort('goal_difference')}>GD</button>
