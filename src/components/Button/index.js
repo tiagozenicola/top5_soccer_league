@@ -3,12 +3,15 @@ import { StyledButton } from './style';
 
 
 const Button = (props) => {
-  console.log(props)
-  const {sortProperty, value, currentSort, orientation} = props
+  const {sortProperty, value, name, onClick, orientation} = props
 
-  return <StyledButton {...props} >
+  return <StyledButton onClick={() => onClick(name)} >
       {value}
-      {orientation === 1 ? '⇩' : '⇧' }
+      {
+        sortProperty !== name ? '' : (  
+          orientation === 1 ? '⇩' : '⇧' 
+        )
+      }
     </StyledButton>
 }
 

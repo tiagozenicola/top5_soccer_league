@@ -74,43 +74,19 @@ class Table extends Component {
         <StyledTable className="soccer_table">
         <thead>
           <tr>
-              <th>
-                <Button value="P" {...this.state} onClick={() => this.sort('position')}/>
-              </th>
-              <th>
-                <Button value="Team" {...this.state} onClick={() => this.sort('name')}/>
-              </th>
-              <th>
-                <Button value="GP" {...this.state} onClick={() => this.sort('games_played')}/>
-              </th>
-              <th>
-                <Button value="W" {...this.state} onClick={() => this.sort('win')}/>
-              </th>
-              <th>
-                <Button value="D" {...this.state} onClick={() => this.sort('drawn')}/>
-              </th>
-              <th>
-                <Button value="L" {...this.state} onClick={() => this.sort('lost')}/>
-              </th>
-              <th>
-                <Button value="F" {...this.state} onClick={() => this.sort('goals_for')}/>
-              </th>
-              <th>
-                <Button value="A" {...this.state} onClick={() => this.sort('goals_against')}/>
-              </th>
-              <th>
-                <Button value="GD" {...this.state} onClick={() => this.sort('goal_difference')}/>
-              </th>
-              <th>
-                <Button value="Pts" {...this.state} onClick={() => this.sort('points')}/>
-              </th>
-              <th>
-                <Button value="Form" {...this.state} onClick={() => this.sort('history')}/>
-              </th>
-              <th>
-                <Button value="%" {...this.state} onClick={() => this.sort('percent')}/>
-              </th>
-            </tr>
+            <th><Button value="P" name='position' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="Team" name='name' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="GP" name='games_played' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="W" name='win' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="D" name='drawn' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="L" name='lost' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="F" name='goals_for' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="A" name='goals_against' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="GD" name='goal_difference' {...this.state} onClick={this.sort}/></th>            
+            <th><Button value="Pts" name='points' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="Form" name='history' {...this.state} onClick={this.sort}/></th>
+            <th><Button value="%" name='percent' {...this.state} onClick={this.sort}/></th>
+          </tr>
         </thead>
         <tbody>
           {listTeams}
