@@ -10,5 +10,13 @@ const TextWrapper = styled.div`
   text-align: center;
 `
 
+const StyledButton = styled.button`
+  color: blue;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+`
 
-export {StyledTable, TextWrapper};
+
+export { StyledTable, TextWrapper, StyledButton };
