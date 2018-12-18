@@ -75,18 +75,38 @@ class Table extends Component {
                 <button onClick={() => this.sort('points')}>P</button>
               </th>
               <th>
-                <button onClick={() => this.sort('nbuttonme')}>Team</button>
+                <button onClick={() => this.sort('name')}>Team</button>
               </th>
-              <th>GP</th>
-              <th>W</th>
-              <th>D</th>
-              <th>L</th>
-              <th>F</th>
-              <th>A</th>
-              <th>GD</th>
-              <th>Pts</th>
-              <th>Form</th>
-              <th>%</th>
+              <th>
+                <button onClick={() => this.sort('games_played')}>GP</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('win')}>W</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('drawn')}>D</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('lost')}>L</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('goals_for')}>F</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('goals_againt')}>A</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('goal_difference')}>GD</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('points')}>Pts</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('history')}>Form</button>
+              </th>
+              <th>
+                <button onClick={() => this.sort('percent')}>%</button>
+              </th>
             </tr>
         </thead>
         <tbody>
