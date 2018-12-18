@@ -27,6 +27,7 @@ const getTeamsFromTable = table => {
     const columns = row.querySelectorAll('td')
 
     teams.push({
+      "position": columns[0].innerText,
       "name": columns[1].innerText,
       "games_played": columns[2].innerText,
       "win": columns[3].innerText,

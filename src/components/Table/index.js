@@ -48,7 +48,7 @@ class Table extends Component {
 
     const listTeams = teams.map((team, index) =>
       <tr key={team.name}>
-        <td>{index + 1}</td>
+        <td>{team.position}</td>
         <td>{team.name}</td>
         <td>{team.games_played}</td>
         <td>{team.win}</td>
@@ -72,7 +72,7 @@ class Table extends Component {
         <thead>
           <tr>
               <th>
-                <button onClick={() => this.sort('points')}>P</button>
+                <button onClick={() => this.sort('position')}>P</button>
               </th>
               <th>
                 <button onClick={() => this.sort('name')}>Team</button>
