@@ -3,24 +3,40 @@ import {StyledTable, TextWrapper} from './style';
 
 class Table extends Component {
 
+  state = {
+  }
 
-  sort = property => {
-    console.log(this.props.teams)
-    console.log(this.props.teams.sort((a,b)=>{
-      console.log(11, a,b, a['points'])
-      if (a[property] < b[property]){
-        return -1;
-      }
-      if (a[property] > b[property]){
-        return 1;
-      }
-      return 0;
-    }))
+  sort = field => {
+    console.log('sort', this.state)
+    this.setState({ sortProperty: field })
+  }
+
+  getSortedTeams = () => {
+    console.log('getSortedTeams', this.props, this.state)
+    const {sortProperty} = this.state
+
+    if (sortProperty){
+      console.log('***sort***', this.props, this.state)
+      return this.props.teams.sort((a,b)=>{
+        console.log(11, a,b, a['points'])
+        if (a[sortProperty] < b[sortProperty]){
+          return -1;
+        }
+        if (a[sortProperty] > b[sortProperty]){
+          return 1;
+        }
+        return 0;
+      })
+    }
+
+    return this.props.teams
   }
 
   render(){
+    console.log('render', this.props)
+    const teams = this.getSortedTeams()
 
-    const listTeams = this.props.teams.map((team, index) =>
+    const listTeams = teams.map((team, index) =>
       <tr key={team.name}>
         <td>{index + 1}</td>
         <td>{team.name}</td>
@@ -46,7 +62,7 @@ class Table extends Component {
         <thead>
           <tr>
               <th><button onClick={() => this.sort('points')}>P</button></th>
-              <th>Team</th>
+              <th><button onClick={() => this.sort('name')}>Team</button></th>
               <th>GP</th>
               <th>W</th>
               <th>D</th>
