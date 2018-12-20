@@ -6,7 +6,7 @@ import NFL from './NFL';
 
 class App extends Component {
 
-  state = {screen: 'nba'}
+  state = {screen: 'soccer'}
 
   render() {
     const {screen} = this.state || {};

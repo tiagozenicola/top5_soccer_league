@@ -27,15 +27,16 @@ const getTeamsFromTable = table => {
     const columns = row.querySelectorAll('td')
 
     teams.push({
+      "position": parseInt(columns[0].innerText),
       "name": columns[1].innerText,
-      "games_played": columns[2].innerText,
-      "win": columns[3].innerText,
-      "drawn": columns[4].innerText,
-      "lost": columns[5].innerText,
-      "goals_for": columns[6].innerText,
-      "goals_against": columns[7].innerText,
-      "goal_difference": columns[8].innerText,
-      "points": columns[9].innerText,
+      "games_played": parseInt(columns[2].innerText),
+      "win": parseInt(columns[3].innerText),
+      "drawn": parseInt(columns[4].innerText),
+      "lost": parseInt(columns[5].innerText),
+      "goals_for": parseInt(columns[6].innerText),
+      "goals_against": parseInt(columns[7].innerText),
+      "goal_difference": parseInt(columns[8].innerText),
+      "points": parseInt(columns[9].innerText),
       "history": [],
       "percent": columns[9].innerText / (columns[2].innerText * 3),
     })
