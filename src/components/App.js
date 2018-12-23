@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   saveTeam = (newTeam) => {
-    console.log('saveTeam')
     const {favorite_teams} = this.state
 
     if (newTeam === ''){

@@ -9,8 +9,11 @@ class Soccer extends Component {
     fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
       .then(response => {
         if (!response.ok){
-          console.error('Error calling site');
+          const error_message = 'Error calling site'
+          console.error(error_message);
+          throw new Error(error_message)
         }
+
         return response.text();
       })
       .then(data => {
@@ -37,13 +40,13 @@ class Soccer extends Component {
     })
 
     const tables = Object.keys(teams).map(country => {
-      return <Table key={country} country={country} teams={teams[country]}/>
+      return <Table key={country} country={country} teams={teams[country]} {...this.props} />
     })
 
     return (
       <Container className="App">
         {tables}
-        {tables.length > 0 && <Table key='all' country='all' teams={all_teams}/>}
+        {tables.length > 0 && <Table key='all' country='all' teams={all_teams} {...this.props}/>}
       </Container>
     )
   }
