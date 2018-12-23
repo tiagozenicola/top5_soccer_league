@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import FiveTables from './FiveTables';
+import Soccer from './Soccer';
 import NBA from './NBA';
 import NFL from './NFL';
 
@@ -22,7 +22,7 @@ class App extends Component {
         <button onClick={() => this.setState({screen: 'nfl'})}>
           NFL
         </button>
-        {screen === 'soccer' && <FiveTables />}
+        {screen === 'soccer' && <Soccer />}
         {screen === 'nba' && <NBA />}
         {screen === 'nfl' && <NFL />}
       </div>

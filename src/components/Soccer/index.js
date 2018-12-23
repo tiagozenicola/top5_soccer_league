@@ -3,7 +3,7 @@ import Container from './style'
 import Table from '../Table'
 import {getTables} from '../Utils/soccer'
 
-class FiveTables extends Component {
+class Soccer extends Component {
 
   componentDidMount(){
     fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
@@ -49,4 +49,4 @@ class FiveTables extends Component {
   }
 }
 
-export default FiveTables;
+export default Soccer;
