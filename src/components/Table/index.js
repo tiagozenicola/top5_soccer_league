@@ -13,8 +13,6 @@ class Table extends Component {
   sort = field => {
     const {sortProperty, orientation} = this.state
     
-    console.log('sort', sortProperty, orientation)
-
     if (field === sortProperty){
       this.setState({ 
         sortProperty: field,
@@ -46,13 +44,23 @@ class Table extends Component {
     return this.props.teams
   }
 
+  showStarForFavoriteTeams = (favorite_teams, team_name) => {
+    if (!favorite_teams)
+      return
+
+    const favorite_teams_upper_case = Array.from(favorite_teams).map(s=>s.toUpperCase().trim())
+    const team_name_upper_case = team_name.toUpperCase().trim()
+    return favorite_teams_upper_case.includes(team_name_upper_case) ? '★' : ''
+  }
+
   render(){
     const teams = this.getSortedTeams()
+    const {favorite_teams} = this.props
 
-    const listTeams = teams.map((team, index) =>
+    const listTeams = teams.map((team) =>
       <tr key={team.name}>
         <td>{team.position}</td>
-        <td>{team.name}</td>
+        <td>{team.name}{this.showStarForFavoriteTeams(favorite_teams, team.name)}</td>
         <td>{team.games_played}</td>
         <td>{team.win}</td>
         <td>{team.drawn}</td>

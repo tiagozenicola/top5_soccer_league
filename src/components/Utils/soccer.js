@@ -1,9 +1,13 @@
-const countries = ['englad', 'spain', 'germany','italy','france']
+const countries = ['england', 'spain', 'italy', 'germany','france']
+
+const removeWomenTable = (_, index) => {
+  return index !== 1
+}
 
 const getTables = data => {
   const html = getAsHtml(data)
   const tables = html.getElementsByTagName('table')
-  const majorTables = Array.from(tables).slice(0, countries.length)
+  const majorTables = Array.from(tables).slice(0, countries.length + 1).filter(removeWomenTable)
 
   const mapTables = {}
 

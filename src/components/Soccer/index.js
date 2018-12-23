@@ -3,14 +3,17 @@ import Container from './style'
 import Table from '../Table'
 import {getTables} from '../Utils/soccer'
 
-class FiveTables extends Component {
+class Soccer extends Component {
 
   componentDidMount(){
     fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
       .then(response => {
         if (!response.ok){
-          console.error('Error calling site');
+          const error_message = 'Error calling site'
+          console.error(error_message);
+          throw new Error(error_message)
         }
+
         return response.text();
       })
       .then(data => {
@@ -37,16 +40,16 @@ class FiveTables extends Component {
     })
 
     const tables = Object.keys(teams).map(country => {
-      return <Table key={country} country={country} teams={teams[country]}/>
+      return <Table key={country} country={country} teams={teams[country]} {...this.props} />
     })
 
     return (
       <Container className="App">
         {tables}
-        {tables.length > 0 && <Table key='all' country='all' teams={all_teams}/>}
+        {tables.length > 0 && <Table key='all' country='all' teams={all_teams} {...this.props}/>}
       </Container>
     )
   }
 }
 
-export default FiveTables;
+export default Soccer;
