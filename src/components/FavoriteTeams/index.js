@@ -38,7 +38,7 @@ class FavoriteTeams extends Component {
       return
     }
 
-    if (favorite_teams.includes(inputValue)){
+    if (favorite_teams.map((s)=>s.toUpperCase()).includes(inputValue.toUpperCase())){
       alert('Team already exists')
       return
     }
