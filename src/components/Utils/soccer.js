@@ -1,4 +1,4 @@
-const countries = ['englad', 'spain', 'italy', 'germany','france']
+const countries = ['england', 'spain', 'italy', 'germany','france']
 
 const removeWomenTable = (_, index) => {
   return index !== 1
