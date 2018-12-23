@@ -49,7 +49,7 @@ class Table extends Component {
   render(){
     const teams = this.getSortedTeams()
 
-    const listTeams = teams.map((team, index) =>
+    const listTeams = teams.map((team) =>
       <tr key={team.name}>
         <td>{team.position}</td>
         <td>{team.name}</td>
