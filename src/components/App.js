@@ -3,6 +3,7 @@ import '../App.css';
 import Soccer from './Soccer';
 import NBA from './NBA';
 import NFL from './NFL';
+import FavoriteTeams from './FavoriteTeams';
 
 class App extends Component {
 
@@ -22,9 +23,13 @@ class App extends Component {
         <button onClick={() => this.setState({screen: 'nfl'})}>
           NFL
         </button>
+        <button onClick={() => this.setState({screen: 'favorite_teams'})}>
+          Favorite Teams
+        </button>
         {screen === 'soccer' && <Soccer />}
         {screen === 'nba' && <NBA />}
         {screen === 'nfl' && <NFL />}
+        {screen === 'favorite_teams' && <FavoriteTeams />}
       </div>
     );
   }
