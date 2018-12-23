@@ -5,22 +5,21 @@ class FavoriteTeams extends Component {
 
   state = {
     inputValue: 'Digite aqui o nome do seu time',
-    favorite_teams: []
   }
 
   render() {
-    const teams = this.state.favorite_teams
+    const {saveTeam, favorite_teams} = this.props
 
-    const favorite_teams = Array.from(teams).map(team =>
+    const teams = Array.from(favorite_teams).map(team =>
       <h1 key={team}>{team}</h1>
     )
 
     return (
       <Container>
         <input type="text" value={this.state.inputValue} onChange={this.updateInputValue}></input>
-        <button onClick={() => this.saveTeam()}>Add team</button>
+        <button onClick={() => saveTeam(this.state.inputValue)}>Add team</button>
         <div>
-          {favorite_teams}
+          {teams}
         </div>
       </Container>
     )
@@ -28,22 +27,6 @@ class FavoriteTeams extends Component {
 
   updateInputValue = (event) => {
     this.setState({inputValue: event.target.value})
-  }
-
-  saveTeam = () => {
-    const {favorite_teams, inputValue} = this.state
-
-    if (inputValue === ''){
-      alert('Please, choose a team name')
-      return
-    }
-
-    if (favorite_teams.map((s)=>s.toUpperCase()).includes(inputValue.toUpperCase())){
-      alert('Team already exists')
-      return
-    }
-
-    this.setState({favorite_teams: [...favorite_teams, inputValue]})
   }
   
 }
