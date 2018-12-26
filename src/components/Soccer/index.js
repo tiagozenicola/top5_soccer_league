@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Container from './style'
 import Table from '../Table'
-import {getTables} from '../Utils/soccer'
+
+const API_URL = 'http://localhost:3001/'
 
 class Soccer extends Component {
 
   componentDidMount(){
-    fetch('https://cors-escape.herokuapp.com/https://www.theguardian.com/football/tables')
+    fetch(API_URL)
       .then(response => {
         if (!response.ok){
           const error_message = 'Error calling site'
@@ -16,9 +17,8 @@ class Soccer extends Component {
 
         return response.text();
       })
-      .then(data => {
-        const tables = getTables(data)
-        this.setState(tables)
+      .then(tables => {
+        this.setState(JSON.parse(tables))
       })
       .catch(console.error);
   }
