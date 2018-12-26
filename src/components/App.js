@@ -9,7 +9,12 @@ class App extends Component {
 
   state = {
     screen: 'soccer',
-    favorite_teams: []
+    favorite_teams: [
+      'Real madrid',
+      'PSG',
+      'Juventus',
+      'Liverpool',
+    ]
   }
 
   saveTeam = (newTeam) => {
