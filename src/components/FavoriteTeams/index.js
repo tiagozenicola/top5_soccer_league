@@ -8,10 +8,14 @@ class FavoriteTeams extends Component {
   }
 
   render() {
-    const {saveTeam, favorite_teams} = this.props
+    const {saveTeam, removeTeam, favorite_teams} = this.props
 
-    const teams = Array.from(favorite_teams).map(team =>
-      <h1 key={team}>{team}</h1>
+    const teams = Array.from(favorite_teams).map((team, index) =>
+      <div key={"div_" + team}>
+        <h1 key={team}>{team}
+          <button key={"remove_" + team} onClick={() => removeTeam(index)}>Excluir</button>
+        </h1>
+      </div>
     )
 
     return (
