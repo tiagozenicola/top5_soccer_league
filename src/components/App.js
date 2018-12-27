@@ -33,6 +33,12 @@ class App extends Component {
     this.setState({favorite_teams: [...favorite_teams, newTeam]})
   }
 
+  removeTeam = (index) => {
+    const {favorite_teams} = this.state
+    favorite_teams.splice(index, 1)
+    this.setState({favorite_teams: [...favorite_teams]})
+  }
+
   render() {
     const {screen, favorite_teams} = this.state || {};
 
@@ -53,7 +59,7 @@ class App extends Component {
         {screen === 'soccer' && <Soccer favorite_teams={favorite_teams}/>}
         {screen === 'nba' && <NBA />}
         {screen === 'nfl' && <NFL />}
-        {screen === 'favorite_teams' && <FavoriteTeams favorite_teams={favorite_teams} saveTeam={this.saveTeam}/>}
+        {screen === 'favorite_teams' && <FavoriteTeams favorite_teams={favorite_teams} saveTeam={this.saveTeam} removeTeam={this.removeTeam}/>}
       </div>
     );
   }
