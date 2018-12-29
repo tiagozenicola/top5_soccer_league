@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyledTable, TextWrapper } from './style';
+import { StyledTable, TextWrapper, StyledButton } from './style';
 import Button from '../Button'
 import {connect} from 'react-redux'
 import { addFavoriteTeam, removeFavoriteTeam } from '../../redux';
@@ -55,6 +55,19 @@ class Table extends Component {
     return favoriteTeams_upper_case.includes(team_name_upper_case) ? '★' : ''
   }
 
+  changeFavorite = (team_name) => {
+    const {favoriteTeams,   addFavoriteTeam,  removeFavoriteTeam } = this.props
+    const index = Array.from(favoriteTeams).map(s => s.toUpperCase()).indexOf(team_name.toUpperCase().trim())
+
+    console.log(favoriteTeams, team_name, index)
+    if (index === -1){      
+      addFavoriteTeam(team_name)
+      return 
+    } 
+
+    removeFavoriteTeam(index)
+  }
+
   render(){
     const teams = this.getSortedTeams()
     const {favoriteTeams} = this.props
@@ -62,7 +75,10 @@ class Table extends Component {
     const listTeams = teams.map((team) =>
       <tr key={team.name}>
         <td>{team.position}</td>
-        <td>{team.name}{this.showStarForFavoriteTeams(favoriteTeams, team.name)}</td>
+        <td>
+          <StyledButton onClick={() => this.changeFavorite(team.name)}>{team.name}</StyledButton>
+          {this.showStarForFavoriteTeams(favoriteTeams, team.name)}
+        </td>
         <td>{team.games_played}</td>
         <td>{team.win}</td>
         <td>{team.drawn}</td>

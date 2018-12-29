@@ -20,7 +20,7 @@ export const favoriteTeams = (state = initialState, action) => {
   console.log('reducers.js', state, action)
   switch (action.type) {
     case 'ADD_FAVORITE_TEAM':
-      return saveTeam([...state], action.team)
+      return saveTeam([...state], action.team.trim())
     case 'REMOVE_FAVORITE_TEAM':
       return removeTeam([...state], action.teamIndex);
     default:
