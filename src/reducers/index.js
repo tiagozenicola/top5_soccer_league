@@ -4,7 +4,6 @@ import {  combineReducers } from 'redux';
 const initialState = ['real madrid', 'juventus', 'psg', 'liverpool']
 
 export const favoriteTeams = (state = initialState, action) => {
-  console.log('reducers.js', state, action)
   switch (action.type) {
     case 'ADD_FAVORITE_TEAM':
       return saveTeam([...state], action.team.trim())

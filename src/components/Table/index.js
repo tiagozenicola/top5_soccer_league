@@ -60,7 +60,6 @@ class Table extends Component {
     const {favoriteTeams,   addFavoriteTeam,  removeFavoriteTeam } = this.props
     const index = Array.from(favoriteTeams).map(s => s.toUpperCase()).indexOf(team_name.toUpperCase().trim())
 
-    console.log(favoriteTeams, team_name, index)
     if (index === -1){      
       addFavoriteTeam(team_name)
       return 
