@@ -1,0 +1,36 @@
+image: node:11.6.0-alpine
+
+before_script:
+  - pwd
+  - ls -l
+
+stages:
+  - build
+  - quality
+  - deploy
+
+build:
+  stage: build
+  script: yarn
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 1 day
+
+lint:
+  stage: quality
+  script: yarn lint
+
+unit_test:
+  stage: quality
+  script: yarn test
+
+coverage_test:
+  stage: quality
+  script: yarn test_coverage
+
+deploy_to_production:
+  stage: deploy
+  script: echo "deploy_to_production"
+  only: 
+    - master
