@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { StyledTable, TextWrapper } from './style';
 import Button from '../Button'
+import {connect} from 'react-redux'
+import { addFavoriteTeam, removeFavoriteTeam } from '../../redux';
 
 
 class Table extends Component {
@@ -44,23 +46,23 @@ class Table extends Component {
     return this.props.teams
   }
 
-  showStarForFavoriteTeams = (favorite_teams, team_name) => {
-    if (!favorite_teams)
+  showStarForFavoriteTeams = (favoriteTeams, team_name) => {
+    if (!favoriteTeams)
       return
 
-    const favorite_teams_upper_case = Array.from(favorite_teams).map(s=>s.toUpperCase().trim())
+    const favoriteTeams_upper_case = Array.from(favoriteTeams).map(s=>s.toUpperCase().trim())
     const team_name_upper_case = team_name.toUpperCase().trim()
-    return favorite_teams_upper_case.includes(team_name_upper_case) ? '★' : ''
+    return favoriteTeams_upper_case.includes(team_name_upper_case) ? '★' : ''
   }
 
   render(){
     const teams = this.getSortedTeams()
-    const {favorite_teams} = this.props
+    const {favoriteTeams} = this.props
 
     const listTeams = teams.map((team) =>
       <tr key={team.name}>
         <td>{team.position}</td>
-        <td>{team.name}{this.showStarForFavoriteTeams(favorite_teams, team.name)}</td>
+        <td>{team.name}{this.showStarForFavoriteTeams(favoriteTeams, team.name)}</td>
         <td>{team.games_played}</td>
         <td>{team.win}</td>
         <td>{team.drawn}</td>
@@ -106,4 +108,17 @@ class Table extends Component {
 
 }
 
-export default Table;
+const mapStateToProps = (state) => {
+  const { favoriteTeams } = state;
+  return {
+    favoriteTeams
+  };
+};
+
+const mapDispatchToProps = {
+  addFavoriteTeam, 
+  removeFavoriteTeam,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

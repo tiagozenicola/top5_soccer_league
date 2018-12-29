@@ -38,7 +38,6 @@ class FavoriteTeams extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps', state)
   const { favoriteTeams } = state;
   return {
     favoriteTeams
