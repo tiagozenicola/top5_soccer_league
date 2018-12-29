@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Container from './style'
 import { connect } from 'react-redux';
-import { addFavoriteTeam, removeFavoriteTeam } from '../../redux';
+import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
 
 class FavoriteTeams extends Component {
 

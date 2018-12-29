@@ -1,21 +1,8 @@
-import {
-    combineReducers,
-    createStore,
-  } from 'redux';
-  
-// actions.js
-export const addFavoriteTeam = team => ({
-  type: 'ADD_FAVORITE_TEAM',
-  team,
-});
+import {  combineReducers } from 'redux';  
 
-export const removeFavoriteTeam = teamIndex => ({
-  type: 'REMOVE_FAVORITE_TEAM',
-  teamIndex
-});
 
-// reducers.js
 const initialState = ['real madrid', 'juventus', 'psg', 'liverpool']
+
 export const favoriteTeams = (state = initialState, action) => {
   console.log('reducers.js', state, action)
   switch (action.type) {
@@ -52,10 +39,3 @@ export const reducers = combineReducers({
   favoriteTeams,
 });
 
-// store.js
-export function configureStore(initialState = {}) {
-  const store = createStore(reducers, initialState);
-  return store;
-};
-
-export const store = configureStore();

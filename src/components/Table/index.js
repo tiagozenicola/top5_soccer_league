@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyledTable, TextWrapper, StyledButton } from './style';
 import Button from '../Button'
 import {connect} from 'react-redux'
-import { addFavoriteTeam, removeFavoriteTeam } from '../../redux';
+import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
 
 
 class Table extends Component {
