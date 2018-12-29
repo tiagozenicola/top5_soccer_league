@@ -27,7 +27,7 @@ unit_test:
 
 coverage_test:
   stage: quality
-  script: echo "coverage_test"
+  script: yarn test_coverage
 
 deploy_to_production:
   stage: deploy
