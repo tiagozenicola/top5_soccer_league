@@ -1,5 +1,9 @@
 image: node:11.6.0-alpine
 
+before_script:
+  - pwd
+  - ls -l
+
 stages:
   - build
   - quality
@@ -8,6 +12,10 @@ stages:
 build:
   stage: build
   script: yarn
+  artifacts:
+    paths:
+      - node_modules
+    expire_in: 1 day
 
 lint:
   stage: quality
