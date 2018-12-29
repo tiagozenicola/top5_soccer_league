@@ -24,4 +24,5 @@ coverage_test:
 deploy_to_production:
   stage: deploy
   script: echo "deploy_to_production"
-  only: master
+  only: 
+    - master
