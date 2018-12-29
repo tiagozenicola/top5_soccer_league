@@ -10,12 +10,12 @@ class FavoriteTeams extends Component {
   }
 
   render() {
-    const {saveTeam, removeTeam, favorite_teams} = this.props
+    const {addFavoriteTeam, removeFavoriteTeam, favoriteTeams} = this.props
 
-    const teams = Array.from(favorite_teams).map((team, index) =>
+    const teams = Array.from(favoriteTeams).map((team, index) =>
       <div key={"div_" + team}>
         <h1 key={team}>{team}
-          <button key={"remove_" + team} onClick={() => removeTeam(index)}>Excluir</button>
+          <button key={"remove_" + team} onClick={() => removeFavoriteTeam(index)}>Excluir</button>
         </h1>
       </div>
     )
@@ -23,7 +23,7 @@ class FavoriteTeams extends Component {
     return (
       <Container>
         <input type="text" value={this.state.inputValue} onChange={this.updateInputValue}></input>
-        <button onClick={() => saveTeam(this.state.inputValue)}>Add team</button>
+        <button onClick={() => addFavoriteTeam(this.state.inputValue)}>Add team</button>
         <div>
           {teams}
         </div>
