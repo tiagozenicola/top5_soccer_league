@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Container from './style'
 import { connect } from 'react-redux';
 import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
+import Link from '../atoms/Link'
 
 class FavoriteTeams extends Component {
 
@@ -14,16 +15,15 @@ class FavoriteTeams extends Component {
 
     const teams = Array.from(favoriteTeams).map((team, index) =>
       <div key={"div_" + team}>
-        <h1 key={team}>{team}
-          <button key={"remove_" + team} onClick={() => removeFavoriteTeam(index)}>Excluir</button>
-        </h1>
+        <Link key={"remove_" + team} onClick={() => removeFavoriteTeam(index)}>Excluir</Link>
+        {team}
       </div>
     )
 
     return (
       <Container>
         <input type="text" value={this.state.inputValue} onChange={this.updateInputValue}></input>
-        <button onClick={() => addFavoriteTeam(this.state.inputValue)}>Add team</button>
+        <Link onClick={() => addFavoriteTeam(this.state.inputValue)}>Add team</Link>
         <div>
           {teams}
         </div>
