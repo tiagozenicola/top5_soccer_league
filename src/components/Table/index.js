@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { StyledTable, TextWrapper } from './style';
+import Link from '../atoms/Link';
 import Button from '../Button'
+import {connect} from 'react-redux'
+import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
 
 
 class Table extends Component {
@@ -44,23 +47,39 @@ class Table extends Component {
     return this.props.teams
   }
 
-  showStarForFavoriteTeams = (favorite_teams, team_name) => {
-    if (!favorite_teams)
+  showStarForFavoriteTeams = (favoriteTeams, team_name) => {
+    if (!favoriteTeams)
       return
 
-    const favorite_teams_upper_case = Array.from(favorite_teams).map(s=>s.toUpperCase().trim())
+    const favoriteTeams_upper_case = Array.from(favoriteTeams).map(s=>s.toUpperCase().trim())
     const team_name_upper_case = team_name.toUpperCase().trim()
-    return favorite_teams_upper_case.includes(team_name_upper_case) ? '★' : ''
+    return favoriteTeams_upper_case.includes(team_name_upper_case) ? '★' : ''
+  }
+
+  changeFavorite = (team_name) => {
+    const {favoriteTeams,   addFavoriteTeam,  removeFavoriteTeam } = this.props
+    const index = Array.from(favoriteTeams).map(s => s.toUpperCase()).indexOf(team_name.toUpperCase().trim())
+
+    console.log(favoriteTeams, team_name, index)
+    if (index === -1){      
+      addFavoriteTeam(team_name)
+      return 
+    } 
+
+    removeFavoriteTeam(index)
   }
 
   render(){
     const teams = this.getSortedTeams()
-    const {favorite_teams} = this.props
+    const {favoriteTeams} = this.props
 
     const listTeams = teams.map((team) =>
       <tr key={team.name}>
         <td>{team.position}</td>
-        <td>{team.name}{this.showStarForFavoriteTeams(favorite_teams, team.name)}</td>
+        <td>
+          <Link onClick={() => this.changeFavorite(team.name)}>{team.name}</Link>
+          {this.showStarForFavoriteTeams(favoriteTeams, team.name)}
+        </td>
         <td>{team.games_played}</td>
         <td>{team.win}</td>
         <td>{team.drawn}</td>
@@ -106,4 +125,17 @@ class Table extends Component {
 
 }
 
-export default Table;
+const mapStateToProps = (state) => {
+  const { favoriteTeams } = state;
+  return {
+    favoriteTeams
+  };
+};
+
+const mapDispatchToProps = {
+  addFavoriteTeam, 
+  removeFavoriteTeam,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
