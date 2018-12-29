@@ -19,15 +19,16 @@ export const favoriteTeams = (state = [], action) => {
   console.log('reducers.js', state, action)
   switch (action.type) {
     case 'ADD_FAVORITE_TEAM':
-      return saveTeam(state, action.team)
+      return saveTeam([...state], action.team)
     case 'REMOVE_FAVORITE_TEAM':
-      return removeTeam(state, action.teamIndex);
+      return removeTeam([...state], action.teamIndex);
     default:
       return state;
   }
 };
 
 const saveTeam = (favoriteTeams, team) => {
+
   if (team === ''){
     alert('Please, choose a team name')
     return favoriteTeams
