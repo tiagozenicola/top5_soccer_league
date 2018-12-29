@@ -1,0 +1,27 @@
+image: node:11.6.0-alpine
+
+stages:
+  - build
+  - quality
+  - deploy
+
+build:
+  stage: build
+  script: yarn
+
+lint:
+  stage: quality
+  script: yarn lint
+
+unit_test:
+  stage: quality
+  script: yarn test
+
+coverage_test:
+  stage: quality
+  script: echo "coverage_test"
+
+deploy_to_production:
+  stage: deploy
+  script: echo "deploy_to_production"
+  only: master
