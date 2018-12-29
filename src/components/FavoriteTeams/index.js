@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Container from './style'
+import { connect } from 'react-redux';
+import { addFavoriteTeam, removeFavoriteTeam } from '../../redux';
 
 class FavoriteTeams extends Component {
 
@@ -35,4 +37,18 @@ class FavoriteTeams extends Component {
   
 }
 
-export default FavoriteTeams;
+const mapStateToProps = (state) => {
+  console.log('mapStateToProps', state)
+  const { favoriteTeams } = state;
+  return {
+    favoriteTeams
+  };
+};
+
+const mapDispatchToProps = {
+  addFavoriteTeam, 
+  removeFavoriteTeam,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteTeams);
