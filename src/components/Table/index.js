@@ -28,9 +28,10 @@ class Table extends Component {
 
   getSortedTeams = () => {
     const { sortProperty, orientation } = this.state;
+    const { teams } = this.props;
 
     if (sortProperty) {
-      return this.props.teams.sort((a, b) => {
+      return teams.sort((a, b) => {
         if (a[sortProperty] < b[sortProperty]) {
           return -1 * orientation;
         }
@@ -43,7 +44,7 @@ class Table extends Component {
       });
     }
 
-    return this.props.teams;
+    return teams;
   }
 
   showStarForFavoriteTeams = (favoriteTeams, teamName) => {
