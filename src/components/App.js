@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   render() {
-    const { screen } = this.state || {};
+    const { screen } = this.state;
 
     return (
       <div className="App">
