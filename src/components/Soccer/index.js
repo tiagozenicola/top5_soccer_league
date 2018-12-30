@@ -37,7 +37,8 @@ class Soccer extends Component {
         return 0;
       });
 
-    const tables = Object.keys(teams).map(country => <Table key={country} country={country} teams={teams[country]} {...this.props} />);
+    const tables = Object.keys(teams)
+      .map(country => <Table key={country} country={country} teams={teams[country]} {...this.props} />); // eslint-disable-line max-len
 
     return (
       <Container className="App">
