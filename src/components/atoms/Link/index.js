@@ -1,4 +1,4 @@
-import { Link } from './style';
+import Link from './style';
 
 
 export default Link;

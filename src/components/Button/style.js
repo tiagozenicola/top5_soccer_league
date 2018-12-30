@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
 const StyledButton = styled.button`
@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   background: none;
   text-decoration: underline;
   cursor: pointer;
-`
+`;
 
 
-export { StyledButton };
+export default StyledButton;

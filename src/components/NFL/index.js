@@ -1,16 +1,10 @@
-import React, {Component} from 'react';
-import Container from './style'
+import React from 'react';
+import Container from './style';
 
-class NFL extends Component {
-
-  render(){    
-    return (
-      <Container>
-        NFL goes here
-      </Container>
-    )
-  }
-  
-}
+const NFL = () => (
+  <Container>
+      NFL goes here
+  </Container>
+);
 
 export default NFL;

@@ -6,32 +6,31 @@ import NFL from './NFL';
 import FavoriteTeams from './FavoriteTeams';
 
 class App extends Component {
-
   state = {
     screen: 'soccer',
   }
 
   render() {
-    const {screen} = this.state || {};
+    const { screen } = this.state;
 
     return (
       <div className="App">
-        <button onClick={() => this.setState({screen: 'soccer'})}>
+        <button type="button" onClick={() => this.setState({ screen: 'soccer' })}>
           Soccer
         </button>
-        <button onClick={() => this.setState({screen: 'nba'})}>
+        <button type="button" onClick={() => this.setState({ screen: 'nba' })}>
           NBA
         </button>
-        <button onClick={() => this.setState({screen: 'nfl'})}>
+        <button type="button" onClick={() => this.setState({ screen: 'nfl' })}>
           NFL
         </button>
-        <button onClick={() => this.setState({screen: 'favorite_teams'})}>
+        <button type="button" onClick={() => this.setState({ screen: 'favorite_teams' })}>
           Favorite Teams
         </button>
-        {screen === 'soccer' && <Soccer/>}
+        {screen === 'soccer' && <Soccer />}
         {screen === 'nba' && <NBA />}
         {screen === 'nfl' && <NFL />}
-        {screen === 'favorite_teams' && <FavoriteTeams/>}
+        {screen === 'favorite_teams' && <FavoriteTeams />}
       </div>
     );
   }
