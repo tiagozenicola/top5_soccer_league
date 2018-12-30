@@ -56,20 +56,22 @@ class Table extends Component {
   }
 
   changeFavorite = (teamName) => {
-    const { favoriteTeams, addFavoriteTeam, removeFavoriteTeam } = this.props;
-    const index = Array.from(favoriteTeams).map(s => s.toUpperCase()).indexOf(teamName.toUpperCase().trim());
+    const { favoriteTeams, addFavoriteTeamAction, removeFavoriteTeamAction } = this.props;
+    const index = Array.from(favoriteTeams)
+      .map(s => s.toUpperCase())
+      .indexOf(teamName.toUpperCase().trim());
 
     if (index === -1) {
-      addFavoriteTeam(teamName);
+      addFavoriteTeamAction(teamName);
       return;
     }
 
-    removeFavoriteTeam(index);
+    removeFavoriteTeamAction(index);
   }
 
   render() {
     const teams = this.getSortedTeams();
-    const { favoriteTeams } = this.props;
+    const { favoriteTeams, country } = this.props;
 
     const listTeams = teams.map(team => (
       <tr key={team.name}>
@@ -94,7 +96,7 @@ class Table extends Component {
     return (
       <div>
         <TextWrapper>
-          {this.props.country}
+          {country}
         </TextWrapper>
         <StyledTable className="soccer_table">
           <thead>
@@ -130,8 +132,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  addFavoriteTeam,
-  removeFavoriteTeam,
+  addFavoriteTeamAction: addFavoriteTeam,
+  removeFavoriteTeamAction: removeFavoriteTeam,
 };
 
 
