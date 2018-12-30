@@ -1,38 +1,37 @@
-import React, {Component} from 'react';
-import Container from './style'
+import React, { Component } from 'react';
+import Container from './style';
 
 class FavoriteTeams extends Component {
-
   state = {
     inputValue: 'Digite aqui o nome do seu time',
   }
 
   render() {
-    const {saveTeam, removeTeam, favorite_teams} = this.props
+    const { saveTeam, removeTeam, favorite_teams } = this.props;
 
-    const teams = Array.from(favorite_teams).map((team, index) =>
-      <div key={"div_" + team}>
-        <h1 key={team}>{team}
-          <button key={"remove_" + team} onClick={() => removeTeam(index)}>Excluir</button>
+    const teams = Array.from(favorite_teams).map((team, index) => (
+      <div key={`div_${team}`}>
+        <h1 key={team}>
+          {team}
+          <button key={`remove_${team}`} onClick={() => removeTeam(index)}>Excluir</button>
         </h1>
       </div>
-    )
+    ));
 
     return (
       <Container>
-        <input type="text" value={this.state.inputValue} onChange={this.updateInputValue}></input>
+        <input type="text" value={this.state.inputValue} onChange={this.updateInputValue} />
         <button onClick={() => saveTeam(this.state.inputValue)}>Add team</button>
         <div>
           {teams}
         </div>
       </Container>
-    )
+    );
   }
 
   updateInputValue = (event) => {
-    this.setState({inputValue: event.target.value})
+    this.setState({ inputValue: event.target.value });
   }
-  
 }
 
 export default FavoriteTeams;
