@@ -9,9 +9,9 @@ class Soccer extends Component {
     fetch(API_URL)
       .then((response) => {
         if (!response.ok) {
-          const error_message = 'Error calling site';
-          console.error(error_message);
-          throw new Error(error_message);
+          const errorMessage = 'Error calling site';
+          console.error(errorMessage);
+          throw new Error(errorMessage);
         }
 
         return response.text();
@@ -25,7 +25,7 @@ class Soccer extends Component {
   render() {
     const teams = this.state || [];
 
-    const all_teams = Object.keys(teams)
+    const allTeams = Object.keys(teams)
       .flatMap(key => teams[key])
       .sort((a, b) => {
         if (a.percent < b.percent) {
@@ -43,7 +43,7 @@ class Soccer extends Component {
     return (
       <Container className="App">
         {tables}
-        {tables.length > 0 && <Table key="all" country="all" teams={all_teams} {...this.props} />}
+        {tables.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
       </Container>
     );
   }
