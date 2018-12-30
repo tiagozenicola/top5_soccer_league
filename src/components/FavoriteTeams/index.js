@@ -10,6 +10,10 @@ class FavoriteTeams extends Component {
     inputValue: 'Digite aqui o nome do seu time',
   }
 
+  updateInputValue = (event) => {
+    this.setState({ inputValue: event.target.value });
+  }
+
   render() {
     const { addFavoriteTeamAction, removeFavoriteTeamAction, favoriteTeams } = this.props;
 
@@ -30,10 +34,6 @@ class FavoriteTeams extends Component {
       </Container>
     );
   }
-
-  updateInputValue = (event) => {
-    this.setState({ inputValue: event.target.value });
-  }
 }
 
 const mapStateToProps = (state) => {
@@ -49,7 +49,7 @@ const mapDispatchToProps = {
 };
 
 FavoriteTeams.propTypes = {
-  favoriteTeams: arrayOf(number).isRequired,
+  favoriteTeams: arrayOf(string).isRequired,
   addFavoriteTeamAction: func.isRequired,
   removeFavoriteTeamAction: func.isRequired,
 };
