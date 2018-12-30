@@ -4,25 +4,21 @@ import enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import Button from '../components/Button'
 import 'jest-styled-components'
-import { wrap } from 'module';
 
 enzyme.configure({ adapter: new Adapter() })
 
 it('renders Button with no sort', () => {
-  const sort = () => {}
-  const button = renderer.create(<Button value="P" name="position" sortProperty="percent" orientation={-1} onClick={sort}/>).toJSON()
+  const button = renderer.create(<Button value="P" name="position" sortProperty="percent" orientation={-1} onClick={() => {}}/>).toJSON()
   expect(button).toMatchSnapshot()
 })
 
 it('renders Button sorting asc', () => {
-  const sort = () => {}
-  const button = renderer.create(<Button value="P" name="position" sortProperty="position" orientation={-1} onClick={sort}/>).toJSON()
+  const button = renderer.create(<Button value="P" name="position" sortProperty="position" orientation={-1} onClick={() => {}}/>).toJSON()
   expect(button).toMatchSnapshot()
 })
 
 it('renders Button sorting desc', () => {
-  const sort = () => {}
-  const button = renderer.create(<Button value="P" name="position" sortProperty="position" orientation={1} onClick={sort}/>).toJSON()
+  const button = renderer.create(<Button value="P" name="position" sortProperty="position" orientation={1} onClick={() => {}}/>).toJSON()
   expect(button).toMatchSnapshot()
 })
 
