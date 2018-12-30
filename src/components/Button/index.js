@@ -1,4 +1,5 @@
 import React from 'react';
+import { string, func, number } from 'prop-types';
 import { StyledButton } from './style';
 
 
@@ -17,6 +18,14 @@ const Button = (props) => {
       }
     </StyledButton>
   );
+};
+
+Button.propTypes = {
+  sortProperty: string.isRequired,
+  value: string.isRequired,
+  name: string.isRequired,
+  onClick: func.isRequired,
+  orientation: number.isRequired,
 };
 
 
