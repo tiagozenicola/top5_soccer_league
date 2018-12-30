@@ -48,8 +48,6 @@ class Table extends Component {
   }
 
   showStarForFavoriteTeams = (favoriteTeams, teamName) => {
-    if (!favoriteTeams) return;
-
     const favoriteTeamsUpperCase = Array.from(favoriteTeams).map(s => s.toUpperCase().trim());
     const teamNameUpperCase = teamName.toUpperCase().trim();
     return favoriteTeamsUpperCase.includes(teamNameUpperCase) ? '★' : '';
