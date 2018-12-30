@@ -5,7 +5,7 @@ const addFavoriteTeam = team => ({
 
 const removeFavoriteTeam = teamIndex => ({
   type: 'REMOVE_FAVORITE_TEAM',
-  teamIndex
+  teamIndex,
 });
 
-export {addFavoriteTeam, removeFavoriteTeam}
+export { addFavoriteTeam, removeFavoriteTeam };
