@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { string, func, arrayOf } from 'prop-types';
 import Container from './style';
 import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
-import Link from '../atoms/Link';
+import Button from '../atoms/Link';
 
 class FavoriteTeams extends Component {
   state = {
@@ -20,7 +20,7 @@ class FavoriteTeams extends Component {
 
     const teams = Array.from(favoriteTeams).map((team, index) => (
       <div key={`div_${team}`}>
-        <Link key={`remove_${team}`} onClick={() => removeFavoriteTeamAction(index)}>Excluir</Link>
+        <Button key={`remove_${team}`} onClick={() => removeFavoriteTeamAction(index)}>Excluir</Button>
         {team}
       </div>
     ));
@@ -28,7 +28,7 @@ class FavoriteTeams extends Component {
     return (
       <Container>
         <input type="text" value={inputValue} onChange={this.updateInputValue} />
-        <Link onClick={() => addFavoriteTeamAction(inputValue)}>Add team</Link>
+        <Button onClick={() => addFavoriteTeamAction(inputValue)}>Add team</Button>
         <div>
           {teams}
         </div>
