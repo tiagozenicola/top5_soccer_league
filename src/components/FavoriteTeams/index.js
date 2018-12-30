@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { string, func, arrayOf } from 'prop-types';
 import Container from './style';
 import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
 import Link from '../atoms/Link';
@@ -45,6 +46,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   addFavoriteTeamAction: addFavoriteTeam,
   removeFavoriteTeamAction: removeFavoriteTeam,
+};
+
+FavoriteTeams.propTypes = {
+  favoriteTeams: arrayOf(number).isRequired,
+  addFavoriteTeamAction: func.isRequired,
+  removeFavoriteTeamAction: func.isRequired,
 };
 
 
