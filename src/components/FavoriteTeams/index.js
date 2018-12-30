@@ -16,6 +16,7 @@ class FavoriteTeams extends Component {
 
   render() {
     const { addFavoriteTeamAction, removeFavoriteTeamAction, favoriteTeams } = this.props;
+    const { inputValue } = this.state;
 
     const teams = Array.from(favoriteTeams).map((team, index) => (
       <div key={`div_${team}`}>
@@ -26,8 +27,8 @@ class FavoriteTeams extends Component {
 
     return (
       <Container>
-        <input type="text" value={this.state.inputValue} onChange={this.updateInputValue} />
-        <Link onClick={() => addFavoriteTeamAction(this.state.inputValue)}>Add team</Link>
+        <input type="text" value={inputValue} onChange={this.updateInputValue} />
+        <Link onClick={() => addFavoriteTeamAction(inputValue)}>Add team</Link>
         <div>
           {teams}
         </div>
