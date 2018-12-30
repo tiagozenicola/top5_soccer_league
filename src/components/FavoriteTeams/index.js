@@ -10,11 +10,11 @@ class FavoriteTeams extends Component {
   }
 
   render() {
-    const { addFavoriteTeam, removeFavoriteTeam, favoriteTeams } = this.props;
+    const { addFavoriteTeamAction, removeFavoriteTeamAction, favoriteTeams } = this.props;
 
     const teams = Array.from(favoriteTeams).map((team, index) => (
       <div key={`div_${team}`}>
-        <Link key={`remove_${team}`} onClick={() => removeFavoriteTeam(index)}>Excluir</Link>
+        <Link key={`remove_${team}`} onClick={() => removeFavoriteTeamAction(index)}>Excluir</Link>
         {team}
       </div>
     ));
@@ -22,7 +22,7 @@ class FavoriteTeams extends Component {
     return (
       <Container>
         <input type="text" value={this.state.inputValue} onChange={this.updateInputValue} />
-        <Link onClick={() => addFavoriteTeam(this.state.inputValue)}>Add team</Link>
+        <Link onClick={() => addFavoriteTeamAction(this.state.inputValue)}>Add team</Link>
         <div>
           {teams}
         </div>
@@ -43,8 +43,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  addFavoriteTeam,
-  removeFavoriteTeam,
+  addFavoriteTeamAction: addFavoriteTeam,
+  removeFavoriteTeamAction: removeFavoriteTeam,
 };
 
 
