@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Button sorting asc 1`] = `
+.c0 {
+  color: blue;
+  border: none;
+  background: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+<button
+  className="c0"
+  onClick={[Function]}
+>
+  P
+  ⇩
+</button>
+`;
+
+exports[`renders Button sorting desc 1`] = `
+.c0 {
+  color: blue;
+  border: none;
+  background: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+<button
+  className="c0"
+  onClick={[Function]}
+>
+  P
+  ⇧
+</button>
+`;
+
+exports[`renders Button with no sort 1`] = `
+.c0 {
+  color: blue;
+  border: none;
+  background: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+<button
+  className="c0"
+  onClick={[Function]}
+>
+  P
+  
+</button>
+`;
