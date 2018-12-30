@@ -2,6 +2,11 @@ import React from 'react';
 import { string, func, number } from 'prop-types';
 import StyledButton from './style';
 
+const getSortIcon = (sortProperty, name, orientation) => {
+  if (sortProperty !== name) { return ''; }
+
+  return orientation === 1 ? '⇧' : '⇩';
+};
 
 const Button = (props) => {
   const {
@@ -11,11 +16,7 @@ const Button = (props) => {
   return (
     <StyledButton onClick={() => onClick(name)}>
       {value}
-      {
-        sortProperty !== name ? '' : (
-          orientation === 1 ? '⇧' : '⇩'
-        )
-      }
+      {getSortIcon(sortProperty, name, orientation) }
     </StyledButton>
   );
 };
