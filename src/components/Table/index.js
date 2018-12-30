@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyledTable, TextWrapper } from './style';
-import Link from '../atoms/Link';
+import ButtonLink from '../atoms/Link';
 import Button from '../Button';
 import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
 
@@ -77,7 +77,7 @@ class Table extends Component {
       <tr key={team.name}>
         <td>{team.position}</td>
         <td>
-          <Link onClick={() => this.changeFavorite(team.name)}>{team.name}</Link>
+          <ButtonLink onClick={() => this.changeFavorite(team.name)}>{team.name}</ButtonLink>
           {this.showStarForFavoriteTeams(favoriteTeams, team.name)}
         </td>
         <td>{team.games_played}</td>

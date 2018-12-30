@@ -10,7 +10,6 @@ class Soccer extends Component {
       .then((response) => {
         if (!response.ok) {
           const errorMessage = 'Error calling site';
-          console.error(errorMessage);
           throw new Error(errorMessage);
         }
 
@@ -19,7 +18,7 @@ class Soccer extends Component {
       .then((tables) => {
         this.setState(JSON.parse(tables));
       })
-      .catch(console.error);
+      .catch(console.error); // eslint-disable-line no-console
   }
 
   render() {
