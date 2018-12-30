@@ -15,16 +15,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <button onClick={() => this.setState({ screen: 'soccer' })}>
+        <button type="button" onClick={() => this.setState({ screen: 'soccer' })}>
           Soccer
         </button>
-        <button onClick={() => this.setState({ screen: 'nba' })}>
+        <button type="button" onClick={() => this.setState({ screen: 'nba' })}>
           NBA
         </button>
-        <button onClick={() => this.setState({ screen: 'nfl' })}>
+        <button type="button" onClick={() => this.setState({ screen: 'nfl' })}>
           NFL
         </button>
-        <button onClick={() => this.setState({ screen: 'favorite_teams' })}>
+        <button type="button" onClick={() => this.setState({ screen: 'favorite_teams' })}>
           Favorite Teams
         </button>
         {screen === 'soccer' && <Soccer />}
