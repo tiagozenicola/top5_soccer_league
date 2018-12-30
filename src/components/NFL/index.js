@@ -1,12 +1,10 @@
 import React from 'react';
 import Container from './style';
 
-const NFL = () => {
-  return (
-    <Container>
+const NFL = () => (
+  <Container>
       NFL goes here
-    </Container>
-  );
-}
+  </Container>
+);
 
 export default NFL;
