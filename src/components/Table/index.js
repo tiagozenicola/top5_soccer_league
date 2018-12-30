@@ -46,20 +46,20 @@ class Table extends Component {
     return this.props.teams;
   }
 
-  showStarForFavoriteTeams = (favoriteTeams, team_name) => {
+  showStarForFavoriteTeams = (favoriteTeams, teamName) => {
     if (!favoriteTeams) return;
 
-    const favoriteTeams_upper_case = Array.from(favoriteTeams).map(s => s.toUpperCase().trim());
-    const team_name_upper_case = team_name.toUpperCase().trim();
-    return favoriteTeams_upper_case.includes(team_name_upper_case) ? '★' : '';
+    const favoriteTeamsUpperCase = Array.from(favoriteTeams).map(s => s.toUpperCase().trim());
+    const teamNameUpperCase = teamName.toUpperCase().trim();
+    return favoriteTeamsUpperCase.includes(teamNameUpperCase) ? '★' : '';
   }
 
-  changeFavorite = (team_name) => {
+  changeFavorite = (teamName) => {
     const { favoriteTeams, addFavoriteTeam, removeFavoriteTeam } = this.props;
-    const index = Array.from(favoriteTeams).map(s => s.toUpperCase()).indexOf(team_name.toUpperCase().trim());
+    const index = Array.from(favoriteTeams).map(s => s.toUpperCase()).indexOf(teamName.toUpperCase().trim());
 
     if (index === -1) {
-      addFavoriteTeam(team_name);
+      addFavoriteTeam(teamName);
       return;
     }
 
