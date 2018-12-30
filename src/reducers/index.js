@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 const saveTeam = (favoriteTeams, team) => {
   if (team === '') {
-    alert('Please, choose a team name');
+    alert('Please, choose a team name'); // eslint-disable-line no-alert
     return favoriteTeams;
   }
 
   if (favoriteTeams.map(s => s.toUpperCase()).includes(team.toUpperCase())) {
-    alert('Team already exists');
+    alert('Team already exists'); // eslint-disable-line no-alert
     return favoriteTeams;
   }
 
