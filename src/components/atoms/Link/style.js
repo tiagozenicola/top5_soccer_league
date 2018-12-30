@@ -10,4 +10,4 @@ const Link = styled.button`
 `;
 
 
-export { Link };
+export default Link;
