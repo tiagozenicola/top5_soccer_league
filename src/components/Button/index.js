@@ -1,6 +1,6 @@
 import React from 'react';
 import { string, func, number } from 'prop-types';
-import { StyledButton } from './style';
+import StyledButton from './style';
 
 
 const Button = (props) => {
