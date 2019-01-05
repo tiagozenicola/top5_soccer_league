@@ -2,11 +2,53 @@ import React, { Component } from 'react';
 import Container from './style';
 import Table from '../Table';
 
-const API_URL = 'https://api-soccer22.herokuapp.com/tables';
+const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
+const GRAPHQL_REQUEST_BODY = `
+{
+  tables {
+    england {
+      ...teamFields
+    }
+    france {
+      ...teamFields
+    }
+    germany {
+      ...teamFields
+    }
+    italy {
+      ...teamFields
+    }
+    spain {
+      ...teamFields
+    }
+  }
+}
+
+fragment teamFields on Team {
+  position
+  name
+  games_played
+  win
+  drawn
+  lost
+  goals_for
+  goals_against
+  goal_difference
+  points
+  history
+  percent
+}`
 
 class Soccer extends Component {
   componentDidMount() {
-    fetch(API_URL)
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({query: GRAPHQL_REQUEST_BODY})
+    })
       .then((response) => {
         if (!response.ok) {
           const errorMessage = 'Error calling site';
@@ -15,8 +57,8 @@ class Soccer extends Component {
 
         return response.text();
       })
-      .then((tables) => {
-        this.setState(JSON.parse(tables));
+      .then((responseBody) => {
+        this.setState(JSON.parse(responseBody).data.tables);
       })
       .catch(console.error); // eslint-disable-line no-console
   }
