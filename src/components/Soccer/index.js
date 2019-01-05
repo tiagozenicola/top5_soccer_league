@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from './style';
 import Table from '../Table';
 
-const API_URL = 'https://api-soccer22.herokuapp.com/';
+const API_URL = 'https://api-soccer22.herokuapp.com/tables';
 
 class Soccer extends Component {
   componentDidMount() {
