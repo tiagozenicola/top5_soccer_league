@@ -37,7 +37,7 @@ fragment teamFields on Team {
   points
   history
   percent
-}`
+}`;
 
 class Soccer extends Component {
   componentDidMount() {
@@ -45,9 +45,9 @@ class Soccer extends Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
       },
-      body: JSON.stringify({query: GRAPHQL_REQUEST_BODY})
+      body: JSON.stringify({ query: GRAPHQL_REQUEST_BODY }),
     })
       .then((response) => {
         if (!response.ok) {
