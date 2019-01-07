@@ -5,9 +5,9 @@ before_script:
   - ls -l
 
 stages:
+  - deploy
   - build
   - quality
-  - deploy
 
 build:
   stage: build
@@ -31,8 +31,9 @@ coverage_test:
 
 deploy_to_production:
   stage: deploy
+  before_script:
+    - apk add curl
   script:
-    - apt-get install curl -y
     - curl -X POST -d {} https://api.netlify.com/build_hooks/5c33c138e6c7ac5213342f93
   only: 
     - master
