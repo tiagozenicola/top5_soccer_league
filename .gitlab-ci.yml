@@ -33,6 +33,7 @@ deploy_to_production:
   stage: deploy
   before_script:
     - apk add git
+    - git remote set-url origin https://tiagozenicola:$GITHUB_TOKEN@gitlab.com/$CI_PROJECT_PATH.git
   script:
     - git checkout production
     - git merge origin/master
