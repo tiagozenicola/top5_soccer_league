@@ -5,9 +5,9 @@ before_script:
   - ls -l
 
 stages:
+  - deploy
   - build
   - quality
-  - deploy
 
 build:
   stage: build
