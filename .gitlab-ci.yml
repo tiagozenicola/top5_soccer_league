@@ -16,22 +16,26 @@ build:
     paths:
       - node_modules
     expire_in: 1 day
-  except: production
+  except:
+    - production
 
 lint:
   stage: quality
   script: yarn lint
-  except: production
+  except:
+    - production
 
 unit_test:
   stage: quality
   script: yarn test
-  except: production
+  except:
+    - production
 
 coverage_test:
   stage: quality
   script: yarn test_coverage
-  except: production
+  except:
+    - production
 
 deploy_to_production:
   stage: deploy
