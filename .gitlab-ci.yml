@@ -5,9 +5,9 @@ before_script:
   - ls -l
 
 stages:
+  - deploy
   - build
   - quality
-  - deploy
 
 build:
   stage: build
@@ -33,8 +33,11 @@ deploy_to_production:
   stage: deploy
   before_script:
     - apk add curl
+    - echo $CI_COMMIT_SHA
   script:
-    - curl -X POST -d {} https://api.netlify.com/build_hooks/5c33c138e6c7ac5213342f93
+    - git checkout production
+    - git merge origin/master
+    - git reset --hard $CI_COMMIT_SHA
+    - git push -f
   only: 
     - master
-    - feature/deploy_via_ci
