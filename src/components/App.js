@@ -19,7 +19,7 @@ class App extends Component {
           Soccer
         </button>
         <button type="button" onClick={() => this.setState({ screen: 'nba' })}>
-          NBA
+          This should not be here
         </button>
         <button type="button" onClick={() => this.setState({ screen: 'nfl' })}>
           NFL
