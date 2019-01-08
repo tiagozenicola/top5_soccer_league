@@ -32,8 +32,7 @@ coverage_test:
 deploy_to_production:
   stage: deploy
   before_script:
-    - apk add curl
-    - echo $CI_COMMIT_SHA
+    - apk add git
   script:
     - git checkout production
     - git merge origin/master
