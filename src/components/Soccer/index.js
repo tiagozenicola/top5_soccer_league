@@ -2,24 +2,30 @@ import React, { Component } from 'react';
 import Container from './style';
 import Table from '../Table';
 
-const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
+const API_URL = 'http://localhost:4000/graphql';
 const GRAPHQL_REQUEST_BODY = `
 {
-  tables {
-    england {
-      ...teamFields
+  championships{
+    country,
+    teams{
+			...teamFields
     }
-    france {
-      ...teamFields
-    }
-    germany {
-      ...teamFields
-    }
-    italy {
-      ...teamFields
-    }
-    spain {
-      ...teamFields
+    stats{
+      assists{
+        name
+        assists
+        team
+      }
+      goals{
+        name
+        goals
+        team
+      }
+      goalsAndAssists{
+        name
+        goalsAndAssists
+        team
+      }
     }
   }
 }
@@ -58,16 +64,24 @@ class Soccer extends Component {
         return response.text();
       })
       .then((responseBody) => {
-        this.setState(JSON.parse(responseBody).data.tables);
+        this.setState(JSON.parse(responseBody).data.championships);
       })
       .catch(console.error); // eslint-disable-line no-console
   }
 
   render() {
-    const teams = this.state || [];
+    const championships = this.state || [];
 
-    const allTeams = Object.keys(teams)
-      .flatMap(key => teams[key])
+    console.log(665, championships, Array.from(championships))
+    Array.from(championships).map(a => 
+      console.log
+    )
+
+    const allTeams = Array.from(championships)
+      .map(c => {
+        console.log(47, c.teams)
+        return c.teams;
+      })
       .sort((a, b) => {
         if (a.percent < b.percent) {
           return 1;
@@ -79,8 +93,10 @@ class Soccer extends Component {
         return 0;
       });
 
-    const tables = Object.keys(teams)
-      .map(country => <Table key={country} country={country} teams={teams[country]} {...this.props} />); // eslint-disable-line max-len
+    console.log(123, allTeams, championships)
+
+    const tables = Array.from(championships)
+      .map(c => <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />); // eslint-disable-line max-len
 
     return (
       <Container className="App">
