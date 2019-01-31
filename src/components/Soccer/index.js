@@ -3,13 +3,13 @@ import Container from './style';
 import Table from '../Table';
 import SortableTable from '../SortableTable';
 
-const API_URL = 'http://localhost:4000/graphql';
+const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
 const GRAPHQL_REQUEST_BODY = `
 {
   championships{
     country,
     teams{
-			...teamFields
+      ...teamFields
     }
     stats{
       assists{
@@ -80,7 +80,7 @@ class Soccer extends Component {
   }
 
   render() {
-    const {championships} = this.state;
+    const { championships } = this.state;
 
     const allTeams = championships
       .flatMap(c => c.teams)
@@ -99,13 +99,13 @@ class Soccer extends Component {
       .map(c => <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />); // eslint-disable-line max-len
 
     const goals = championships
-      .map(c => <SortableTable key={c.country + '_goals'} country={c.country} stats={c.stats.goals} numberField={'goals'} {...this.props} />); // eslint-disable-line max-len
+      .map(c => <SortableTable key={`${c.country}_goals`} country={c.country} stats={c.stats.goals} numberField="goals" {...this.props} />); // eslint-disable-line max-len
 
     const assists = championships
-      .map(c => <SortableTable key={c.country + '_assists'} country={c.country} stats={c.stats.assists} numberField={'assists'} {...this.props} />); // eslint-disable-line max-len
+      .map(c => <SortableTable key={`${c.country}_assists`} country={c.country} stats={c.stats.assists} numberField="assists" {...this.props} />); // eslint-disable-line max-len
 
     const goalsAndAssists = championships
-      .map(c => <SortableTable key={c.country + '_goalsAndAssists'} country={c.country} stats={c.stats.goalsAndAssists} numberField={'goalsAndAssists'} {...this.props} />); // eslint-disable-line max-len
+      .map(c => <SortableTable key={`${c.country}_goalsAndAssists`} country={c.country} stats={c.stats.goalsAndAssists} numberField="goalsAndAssists" {...this.props} />); // eslint-disable-line max-len
 
     return (
       <Container className="App">
