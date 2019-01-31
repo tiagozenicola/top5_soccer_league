@@ -65,6 +65,7 @@ class SortableTable extends Component {
           <thead>
             <tr>
               <th><Button value="Player" name="name" {...this.state} onClick={this.sort} /></th>
+              {/* eslint-disable max-len */}
               <th><Button value={numberField} name={numberField} {...this.state} onClick={this.sort} /></th>
               <th><Button value="Team" name="team" {...this.state} onClick={this.sort} /></th>
             </tr>
