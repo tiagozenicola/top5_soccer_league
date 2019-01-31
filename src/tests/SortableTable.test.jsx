@@ -8,7 +8,7 @@ import 'jest-styled-components';
 enzyme.configure({ adapter: new Adapter() });
 
 it('renders SortableTable correctly', () => {
-  const stats = [{name: "Eden Hazard", assists: 10, team: "Chelsea"}]
-  const sortableTable = renderer.create(<SortableTable stats={stats} numberField='assists' />).toJSON();
+  const stats = [{ name: 'Eden Hazard', assists: 10, team: 'Chelsea' }];
+  const sortableTable = renderer.create(<SortableTable stats={stats} numberField="assists" />).toJSON();
   expect(sortableTable).toMatchSnapshot();
 });
