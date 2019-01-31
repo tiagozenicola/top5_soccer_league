@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SortableTable correctly 1`] = `
+.c1 {
+  border: 1px solid red;
+  font-size: 12px;
+}
+
+.c0 {
+  text-align: center;
+}
+
+.c2 {
+  color: blue;
+  border: none;
+  background: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+<div>
+  <div
+    className="c0"
+  />
+  <table
+    className="soccer_table c1"
+  >
+    <thead>
+      <tr>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            Player
+            
+          </button>
+        </th>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            assists
+            
+          </button>
+        </th>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            Team
+            
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Eden Hazard
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          Chelsea
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

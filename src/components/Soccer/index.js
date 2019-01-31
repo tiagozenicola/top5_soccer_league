@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import Container from './style';
 import Table from '../Table';
+import SortableTable from '../SortableTable';
 
 const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
 const GRAPHQL_REQUEST_BODY = `
 {
-  tables {
-    england {
+  championships{
+    country,
+    teams{
       ...teamFields
     }
-    france {
-      ...teamFields
-    }
-    germany {
-      ...teamFields
-    }
-    italy {
-      ...teamFields
-    }
-    spain {
-      ...teamFields
+    stats{
+      assists{
+        name
+        assists
+        team
+      }
+      goals{
+        name
+        goals
+        team
+      }
+      goalsAndAssists{
+        name
+        goalsAndAssists
+        team
+      }
     }
   }
 }
@@ -40,6 +47,14 @@ fragment teamFields on Team {
 }`;
 
 class Soccer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      championships: [],
+    };
+  }
+
   componentDidMount() {
     fetch(API_URL, {
       method: 'POST',
@@ -58,16 +73,17 @@ class Soccer extends Component {
         return response.text();
       })
       .then((responseBody) => {
-        this.setState(JSON.parse(responseBody).data.tables);
+        const championshipsArray = JSON.parse(responseBody).data;
+        this.setState(championshipsArray);
       })
       .catch(console.error); // eslint-disable-line no-console
   }
 
   render() {
-    const teams = this.state || [];
+    const { championships } = this.state;
 
-    const allTeams = Object.keys(teams)
-      .flatMap(key => teams[key])
+    const allTeams = championships
+      .flatMap(c => c.teams)
       .sort((a, b) => {
         if (a.percent < b.percent) {
           return 1;
@@ -79,13 +95,25 @@ class Soccer extends Component {
         return 0;
       });
 
-    const tables = Object.keys(teams)
-      .map(country => <Table key={country} country={country} teams={teams[country]} {...this.props} />); // eslint-disable-line max-len
+    const tables = championships
+      .map(c => <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />); // eslint-disable-line max-len
+
+    const goals = championships
+      .map(c => <SortableTable key={`${c.country}_goals`} country={c.country} stats={c.stats.goals} numberField="goals" {...this.props} />); // eslint-disable-line max-len
+
+    const assists = championships
+      .map(c => <SortableTable key={`${c.country}_assists`} country={c.country} stats={c.stats.assists} numberField="assists" {...this.props} />); // eslint-disable-line max-len
+
+    const goalsAndAssists = championships
+      .map(c => <SortableTable key={`${c.country}_goalsAndAssists`} country={c.country} stats={c.stats.goalsAndAssists} numberField="goalsAndAssists" {...this.props} />); // eslint-disable-line max-len
 
     return (
       <Container className="App">
         {tables}
         {tables.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
+        {goals}
+        {assists}
+        {goalsAndAssists}
       </Container>
     );
   }
