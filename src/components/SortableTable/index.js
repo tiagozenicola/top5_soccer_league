@@ -44,34 +44,14 @@ class SortableTable extends Component {
     return stats;
   }
 
-  showStarForFavoriteTeams = (favoriteTeams, teamName) => {
-    const favoriteTeamsUpperCase = Array.from(favoriteTeams).map(s => s.toUpperCase().trim());
-    const teamNameUpperCase = teamName.toUpperCase().trim();
-    return favoriteTeamsUpperCase.includes(teamNameUpperCase) ? '★' : '';
-  }
-
-  changeFavorite = (teamName) => {
-    const { favoriteTeams, addFavoriteTeamAction, removeFavoriteTeamAction } = this.props;
-    const index = Array.from(favoriteTeams)
-      .map(s => s.toUpperCase())
-      .indexOf(teamName.toUpperCase().trim());
-
-    if (index === -1) {
-      addFavoriteTeamAction(teamName);
-      return;
-    }
-
-    removeFavoriteTeamAction(index);
-  }
-
   render() {
     const teams = this.getSortedTeams();
-    const { country } = this.props;
+    const { country, numberField } = this.props;
 
     const listTeams = teams.map(team => (
       <tr key={team.name}>
         <td>{team.name}</td>
-        <td>{team.goals}</td>
+        <td>{team[numberField]}</td>
         <td>{team.team}</td>
       </tr>
     ));
@@ -85,7 +65,7 @@ class SortableTable extends Component {
           <thead>
             <tr>
               <th><Button value="Player" name="name" {...this.state} onClick={this.sort} /></th>
-              <th><Button value="Goals" name="goals" {...this.state} onClick={this.sort} /></th>
+              <th><Button value={numberField} name={numberField} {...this.state} onClick={this.sort} /></th>
               <th><Button value="Team" name="team" {...this.state} onClick={this.sort} /></th>
             </tr>
           </thead>

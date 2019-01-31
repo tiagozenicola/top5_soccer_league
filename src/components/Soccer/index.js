@@ -99,13 +99,21 @@ class Soccer extends Component {
       .map(c => <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />); // eslint-disable-line max-len
 
     const goals = championships
-      .map(c => <SortableTable key={c.country + '_goals'} country={c.country} stats={c.stats.goals} {...this.props} />); // eslint-disable-line max-len
+      .map(c => <SortableTable key={c.country + '_goals'} country={c.country} stats={c.stats.goals} numberField={'goals'} {...this.props} />); // eslint-disable-line max-len
+
+    const assists = championships
+      .map(c => <SortableTable key={c.country + '_assists'} country={c.country} stats={c.stats.assists} numberField={'assists'} {...this.props} />); // eslint-disable-line max-len
+
+    const goalsAndAssists = championships
+      .map(c => <SortableTable key={c.country + '_goalsAndAssists'} country={c.country} stats={c.stats.goalsAndAssists} numberField={'goalsAndAssists'} {...this.props} />); // eslint-disable-line max-len
 
     return (
       <Container className="App">
         {tables}
         {tables.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
         {goals}
+        {assists}
+        {goalsAndAssists}
       </Container>
     );
   }
