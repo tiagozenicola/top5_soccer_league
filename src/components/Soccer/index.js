@@ -46,6 +46,14 @@ fragment teamFields on Team {
 }`;
 
 class Soccer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      championships: [],
+    };
+  }
+
   componentDidMount() {
     fetch(API_URL, {
       method: 'POST',
@@ -64,24 +72,17 @@ class Soccer extends Component {
         return response.text();
       })
       .then((responseBody) => {
-        this.setState(JSON.parse(responseBody).data.championships);
+        const championshipsArray = JSON.parse(responseBody).data;
+        this.setState(championshipsArray);
       })
       .catch(console.error); // eslint-disable-line no-console
   }
 
   render() {
-    const championships = this.state || [];
+    const {championships} = this.state;
 
-    console.log(665, championships, Array.from(championships))
-    Array.from(championships).map(a => 
-      console.log
-    )
-
-    const allTeams = Array.from(championships)
-      .map(c => {
-        console.log(47, c.teams)
-        return c.teams;
-      })
+    const allTeams = championships
+      .flatMap(c => c.teams)
       .sort((a, b) => {
         if (a.percent < b.percent) {
           return 1;
@@ -92,8 +93,6 @@ class Soccer extends Component {
 
         return 0;
       });
-
-    console.log(123, allTeams, championships)
 
     const tables = Array.from(championships)
       .map(c => <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />); // eslint-disable-line max-len
