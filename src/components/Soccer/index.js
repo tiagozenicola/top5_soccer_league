@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Container from './style';
 import Table from '../Table';
 import SortableTable from '../SortableTable';
+import { Block, Hidden } from "reakit";
+
 
 const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
 const GRAPHQL_REQUEST_BODY = `
@@ -153,8 +155,18 @@ class Soccer extends Component {
     const allGoalsAndAssistsTable = <SortableTable key="allGoalsAndAssistsTable" country="all_goalsAndAssists" stats={allGoalsAndAssists} numberField="goalsAndAssists" {...this.props} />; // eslint-disable-line max-len
 
     return (
+
       <Container className="App">
-        {tables}
+        <Hidden.Container>
+          {({ visible, toggle }) => (
+            <Block>
+              <Hidden.Toggle toggle={toggle}>England</Hidden.Toggle>
+              <Hidden visible={visible}>
+                {tables}
+              </Hidden>
+            </Block>
+          )}
+        </Hidden.Container>
         {tables.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
         {goals}
         {assists}
