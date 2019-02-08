@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders SortableTable correctly 1`] = `
+exports[`renders SortableTable correctly with 1 player 1`] = `
 .c1 {
   border: 1px solid red;
   font-size: 12px;
@@ -67,6 +67,176 @@ exports[`renders SortableTable correctly 1`] = `
         </td>
         <td>
           Chelsea
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`renders SortableTable correctly with 1 player sort desc 1`] = `
+.c1 {
+  border: 1px solid red;
+  font-size: 12px;
+}
+
+.c0 {
+  text-align: center;
+}
+
+.c2 {
+  color: blue;
+  border: none;
+  background: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+<div>
+  <div
+    className="c0"
+  />
+  <table
+    className="soccer_table c1"
+  >
+    <thead>
+      <tr>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            Player
+            
+          </button>
+        </th>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            assists
+            
+          </button>
+        </th>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            Team
+            
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Eden Hazard
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          Chelsea
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Lionel Messi
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          Barcelona
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`renders SortableTable correctly with 2 players sort asc 1`] = `
+.c1 {
+  border: 1px solid red;
+  font-size: 12px;
+}
+
+.c0 {
+  text-align: center;
+}
+
+.c2 {
+  color: blue;
+  border: none;
+  background: none;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+<div>
+  <div
+    className="c0"
+  />
+  <table
+    className="soccer_table c1"
+  >
+    <thead>
+      <tr>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            Player
+            
+          </button>
+        </th>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            assists
+            
+          </button>
+        </th>
+        <th>
+          <button
+            className="c2"
+            onClick={[Function]}
+          >
+            Team
+            
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Eden Hazard
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          Chelsea
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Cristiano Ronaldo
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          Juventus
         </td>
       </tr>
     </tbody>
