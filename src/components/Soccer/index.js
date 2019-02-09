@@ -176,10 +176,10 @@ class Soccer extends Component {
               <Block>
                 <StyledHidden.Toggle toggle={toggle}>all</StyledHidden.Toggle>
                 <StyledHidden visible={visible}>
-                  {championships.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
-                  {allGoals.length > 0 && allGoalsTable}
-                  {allAssists.length > 0 && allAssistsTable}
-                  {allGoalsAndAssists.length > 0 && allGoalsAndAssistsTable}
+                  <Table key="all" country="all" teams={allTeams} {...this.props} />
+                  {allGoalsTable}
+                  {allAssistsTable}
+                  {allGoalsAndAssistsTable}
                 </StyledHidden>
               </Block>
             )}
