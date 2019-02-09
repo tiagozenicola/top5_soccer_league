@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyledTable, TextWrapper } from './style';
+import StyledTable from './style';
 import ButtonLink from '../atoms/Link';
 import Button from '../Button';
 import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';
@@ -69,7 +69,7 @@ class Table extends Component {
 
   render() {
     const teams = this.getSortedTeams();
-    const { favoriteTeams, country } = this.props;
+    const { favoriteTeams } = this.props;
 
     const listTeams = teams.map(team => (
       <tr key={team.name}>
@@ -93,9 +93,6 @@ class Table extends Component {
 
     return (
       <div>
-        <TextWrapper>
-          {country}
-        </TextWrapper>
         <StyledTable className="soccer_table">
           <thead>
             <tr>
