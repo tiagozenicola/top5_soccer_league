@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Container from './style';
+import {Container, StyledHidden} from './style';
 import Table from '../Table';
 import SortableTable from '../SortableTable';
-import { Block, Hidden } from "reakit";
+import { Block } from "reakit";
 
 
 const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
@@ -157,16 +157,16 @@ class Soccer extends Component {
     return (
 
       <Container className="App">
-        <Hidden.Container>
+        <StyledHidden.Container>
           {({ visible, toggle }) => (
             <Block>
-              <Hidden.Toggle toggle={toggle}>England</Hidden.Toggle>
-              <Hidden visible={visible}>
+              <StyledHidden.Toggle toggle={toggle}>England</StyledHidden.Toggle>
+              <StyledHidden visible={visible}>
                 {tables}
-              </Hidden>
+              </StyledHidden>
             </Block>
           )}
-        </Hidden.Container>
+        </StyledHidden.Container>
         {tables.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
         {goals}
         {assists}
