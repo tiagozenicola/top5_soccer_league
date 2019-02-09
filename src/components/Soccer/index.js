@@ -150,10 +150,13 @@ class Soccer extends Component {
     ]);
 
     const championshipPanels = championships.map((championship, index) => (
-      <StyledHidden.Container key={`${championship.country}_panel`} initialState={{'visible': true}}>
+      <StyledHidden.Container key={`${championship.country}_panel`} initialState={{ visible: true }}>
         {({ visible, toggle }) => (
           <Block>
-            <StyledHidden.Toggle toggle={toggle}>{visible ? '[-] ' : '[+] '}{championship.country}</StyledHidden.Toggle>
+            <StyledHidden.Toggle toggle={toggle}>
+              {visible ? '[-] ' : '[+] '}
+              {championship.country}
+            </StyledHidden.Toggle>
             <StyledHidden visible={visible}>
               {championshipsWithMoreInformation[index]}
             </StyledHidden>
@@ -171,10 +174,13 @@ class Soccer extends Component {
         {
           championships.length > 0
           && (
-          <StyledHidden.Container initialState={{'visible': true}}>
+          <StyledHidden.Container initialState={{ visible: true }}>
             {({ visible, toggle }) => (
               <Block>
-                <StyledHidden.Toggle toggle={toggle}>{visible ? '[-] ' : '[+] '}all</StyledHidden.Toggle>
+                <StyledHidden.Toggle toggle={toggle}>
+                  {visible ? '[-] ' : '[+] '}
+                  all
+                </StyledHidden.Toggle>
                 <StyledHidden visible={visible}>
                   <Table key="all" country="all" teams={allTeams} {...this.props} />
                   {allGoalsTable}
