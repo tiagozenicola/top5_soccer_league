@@ -154,6 +154,15 @@ class Soccer extends Component {
 
     const allGoalsAndAssistsTable = <SortableTable key="allGoalsAndAssistsTable" country="all_goalsAndAssists" stats={allGoalsAndAssists} numberField="goalsAndAssists" {...this.props} />; // eslint-disable-line max-len
 
+    const componentsToRender = championships.map((_, index) => {
+      return [
+        tables[index],
+        goals[index],
+        assists[index],
+        goalsAndAssists[index],
+      ]
+    })
+
     return (
 
       <Container className="App">
@@ -162,7 +171,17 @@ class Soccer extends Component {
             <Block>
               <StyledHidden.Toggle toggle={toggle}>England</StyledHidden.Toggle>
               <StyledHidden visible={visible}>
-                {tables}
+                {componentsToRender[0]}
+              </StyledHidden>
+            </Block>
+          )}
+        </StyledHidden.Container>
+        <StyledHidden.Container>
+          {({ visible, toggle }) => (
+            <Block>
+              <StyledHidden.Toggle toggle={toggle}>England</StyledHidden.Toggle>
+              <StyledHidden visible={visible}>
+                {componentsToRender[0]}
               </StyledHidden>
             </Block>
           )}
