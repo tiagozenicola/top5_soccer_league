@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Container, StyledHidden} from './style';
+import { Block } from 'reakit';
+import { Container, StyledHidden } from './style';
 import Table from '../Table';
 import SortableTable from '../SortableTable';
-import { Block } from "reakit";
 
 
 const API_URL = 'https://api-soccer22.herokuapp.com/graphql';
@@ -142,27 +142,25 @@ class Soccer extends Component {
 
     const allGoalsAndAssistsTable = <SortableTable key="allGoalsAndAssistsTable" country="all_goalsAndAssists" stats={allGoalsAndAssists} numberField="goalsAndAssists" {...this.props} />; // eslint-disable-line max-len
 
-    const championshipsWithMoreInformation = championships.map((c) => {
-      return [
-        <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />,
-        <SortableTable key={`${c.country}_goals`} country={c.country} stats={c.stats.goals} numberField="goals" {...this.props} />,
-        <SortableTable key={`${c.country}_assists`} country={c.country} stats={c.stats.assists} numberField="assists" {...this.props} />,
-        <SortableTable key={`${c.country}_goalsAndAssists`} country={c.country} stats={c.stats.goalsAndAssists} numberField="goalsAndAssists" {...this.props} />,
-      ]
-    })
+    const championshipsWithMoreInformation = championships.map(c => [
+      <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />,
+      <SortableTable key={`${c.country}_goals`} country={c.country} stats={c.stats.goals} numberField="goals" {...this.props} />,
+      <SortableTable key={`${c.country}_assists`} country={c.country} stats={c.stats.assists} numberField="assists" {...this.props} />,
+      <SortableTable key={`${c.country}_goalsAndAssists`} country={c.country} stats={c.stats.goalsAndAssists} numberField="goalsAndAssists" {...this.props} />,
+    ]);
 
-    const championshipPanels = championships.map((championship, index) => 
-      <StyledHidden.Container>
-      {({ visible, toggle }) => (
-        <Block>
-          <StyledHidden.Toggle toggle={toggle}>{championship.country}</StyledHidden.Toggle>
-          <StyledHidden visible={visible}>
-            {championshipsWithMoreInformation[index]}
-          </StyledHidden>
-        </Block>
-      )}
+    const championshipPanels = championships.map((championship, index) => (
+      <StyledHidden.Container key={`${championship.country}_panel`}>
+        {({ visible, toggle }) => (
+          <Block>
+            <StyledHidden.Toggle toggle={toggle}>{championship.country}</StyledHidden.Toggle>
+            <StyledHidden visible={visible}>
+              {championshipsWithMoreInformation[index]}
+            </StyledHidden>
+          </Block>
+        )}
       </StyledHidden.Container>
-    )
+    ));
 
     return (
 
@@ -171,8 +169,8 @@ class Soccer extends Component {
         {championshipPanels}
 
         {
-          championships.length > 0 
-          &&
+          championships.length > 0
+          && (
           <StyledHidden.Container>
             {({ visible, toggle }) => (
               <Block>
@@ -186,7 +184,7 @@ class Soccer extends Component {
               </Block>
             )}
           </StyledHidden.Container>
-        }
+          )}
 
       </Container>
     );
