@@ -6,8 +6,4 @@ const StyledTable = styled.table`
   font-size: 12px;
 `;
 
-const TextWrapper = styled.div`
-  text-align: center;
-`;
-
-export { StyledTable, TextWrapper };
+export { StyledTable };

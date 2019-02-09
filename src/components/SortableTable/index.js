@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyledTable, TextWrapper } from './style';
+import { StyledTable } from './style';
 import Button from '../Button';
 
 
@@ -46,7 +46,7 @@ class SortableTable extends Component {
 
   render() {
     const teams = this.getSortedTeams();
-    const { country, numberField } = this.props;
+    const { numberField } = this.props;
 
     const listTeams = teams.map(team => (
       <tr key={team.name}>
@@ -58,9 +58,6 @@ class SortableTable extends Component {
 
     return (
       <div>
-        <TextWrapper>
-          {country}
-        </TextWrapper>
         <StyledTable className="soccer_table">
           <thead>
             <tr>
