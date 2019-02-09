@@ -6,4 +6,4 @@ const StyledTable = styled.table`
   font-size: 12px;
 `;
 
-export { StyledTable };
+export default StyledTable;

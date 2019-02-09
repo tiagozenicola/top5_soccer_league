@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyledTable } from './style';
+import StyledTable from './style';
 import ButtonLink from '../atoms/Link';
 import Button from '../Button';
 import { addFavoriteTeam, removeFavoriteTeam } from '../../actions';

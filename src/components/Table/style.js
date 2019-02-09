@@ -7,4 +7,4 @@ const StyledTable = styled.table`
 `;
 
 
-export { StyledTable };
+export default StyledTable;

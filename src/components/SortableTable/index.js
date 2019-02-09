@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyledTable } from './style';
+import StyledTable from './style';
 import Button from '../Button';
 
 
