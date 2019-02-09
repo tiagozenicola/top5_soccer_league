@@ -136,63 +136,58 @@ class Soccer extends Component {
         return 0;
       });
 
-    const tables = championships
-      .map(c => <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />); // eslint-disable-line max-len
-
-    const goals = championships
-      .map(c => <SortableTable key={`${c.country}_goals`} country={c.country} stats={c.stats.goals} numberField="goals" {...this.props} />); // eslint-disable-line max-len
-
-    const assists = championships
-      .map(c => <SortableTable key={`${c.country}_assists`} country={c.country} stats={c.stats.assists} numberField="assists" {...this.props} />); // eslint-disable-line max-len
-
-    const goalsAndAssists = championships
-      .map(c => <SortableTable key={`${c.country}_goalsAndAssists`} country={c.country} stats={c.stats.goalsAndAssists} numberField="goalsAndAssists" {...this.props} />); // eslint-disable-line max-len
-
     const allGoalsTable = <SortableTable key="allGoalsTable" country="all_goals" stats={allGoals} numberField="goals" {...this.props} />; // eslint-disable-line max-len
 
     const allAssistsTable = <SortableTable key="allAssistsTable" country="all_assists" stats={allAssists} numberField="assists" {...this.props} />; // eslint-disable-line max-len
 
     const allGoalsAndAssistsTable = <SortableTable key="allGoalsAndAssistsTable" country="all_goalsAndAssists" stats={allGoalsAndAssists} numberField="goalsAndAssists" {...this.props} />; // eslint-disable-line max-len
 
-    const componentsToRender = championships.map((_, index) => {
+    const championshipsWithMoreInformation = championships.map((c) => {
       return [
-        tables[index],
-        goals[index],
-        assists[index],
-        goalsAndAssists[index],
+        <Table key={c.country} country={c.country} teams={c.teams} {...this.props} />,
+        <SortableTable key={`${c.country}_goals`} country={c.country} stats={c.stats.goals} numberField="goals" {...this.props} />,
+        <SortableTable key={`${c.country}_assists`} country={c.country} stats={c.stats.assists} numberField="assists" {...this.props} />,
+        <SortableTable key={`${c.country}_goalsAndAssists`} country={c.country} stats={c.stats.goalsAndAssists} numberField="goalsAndAssists" {...this.props} />,
       ]
     })
+
+    const championshipPanels = championships.map((championship, index) => 
+      <StyledHidden.Container>
+      {({ visible, toggle }) => (
+        <Block>
+          <StyledHidden.Toggle toggle={toggle}>{championship.country}</StyledHidden.Toggle>
+          <StyledHidden visible={visible}>
+            {championshipsWithMoreInformation[index]}
+          </StyledHidden>
+        </Block>
+      )}
+      </StyledHidden.Container>
+    )
 
     return (
 
       <Container className="App">
-        <StyledHidden.Container>
-          {({ visible, toggle }) => (
-            <Block>
-              <StyledHidden.Toggle toggle={toggle}>England</StyledHidden.Toggle>
-              <StyledHidden visible={visible}>
-                {componentsToRender[0]}
-              </StyledHidden>
-            </Block>
-          )}
-        </StyledHidden.Container>
-        <StyledHidden.Container>
-          {({ visible, toggle }) => (
-            <Block>
-              <StyledHidden.Toggle toggle={toggle}>England</StyledHidden.Toggle>
-              <StyledHidden visible={visible}>
-                {componentsToRender[0]}
-              </StyledHidden>
-            </Block>
-          )}
-        </StyledHidden.Container>
-        {tables.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
-        {goals}
-        {assists}
-        {goalsAndAssists}
-        {allGoals.length > 0 && allGoalsTable}
-        {allAssists.length > 0 && allAssistsTable}
-        {allGoalsAndAssists.length > 0 && allGoalsAndAssistsTable}
+
+        {championshipPanels}
+
+        {
+          championships.length > 0 
+          &&
+          <StyledHidden.Container>
+            {({ visible, toggle }) => (
+              <Block>
+                <StyledHidden.Toggle toggle={toggle}>all</StyledHidden.Toggle>
+                <StyledHidden visible={visible}>
+                  {championships.length > 0 && <Table key="all" country="all" teams={allTeams} {...this.props} />}
+                  {allGoals.length > 0 && allGoalsTable}
+                  {allAssists.length > 0 && allAssistsTable}
+                  {allGoalsAndAssists.length > 0 && allGoalsAndAssistsTable}
+                </StyledHidden>
+              </Block>
+            )}
+          </StyledHidden.Container>
+        }
+
       </Container>
     );
   }
